@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_bg": "#FAF7F2",
@@ -9,6 +18,32 @@
     "social_instagram": "https://instagram.com/charchaand",
     "social_pinterest": "https://pinterest.com/charchaand",
     "social_youtube": "https://youtube.com/charchaand",
-    "cart_drawer_enabled": true
+    "cart_drawer_enabled": true,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": false,
+          "announcement_text_1": "Complimentary White Glove Delivery Across India",
+          "announcement_text_2": "Bespoke Bridal Consultations Available",
+          "track_order_url": "",
+          "concierge_url": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "privacy_url": "",
+          "terms_url": ""
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
