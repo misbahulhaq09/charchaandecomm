@@ -61,18 +61,6 @@
         "button_text": "SHOP ALL"
       }
     },
-    "featured_collection_XqhqxJ": {
-      "type": "featured-collection",
-      "name": "Featured Collection",
-      "settings": {
-        "subheading": "Couture Collection",
-        "heading": "PERFUMES",
-        "description": "The latest collection. Handcrafted heirloom couture.",
-        "collection": "perfumes",
-        "products_to_show": 4,
-        "button_text": "SHOP ALL"
-      }
-    },
     "featured_collection_j3kgqD": {
       "type": "featured-collection",
       "name": "Featured Collection",
@@ -105,18 +93,6 @@
         "heading": "MEN'S FORMAL",
         "description": "The latest collection. Handcrafted heirloom couture.",
         "collection": "mens-formal",
-        "products_to_show": 4,
-        "button_text": "SHOP ALL"
-      }
-    },
-    "featured_collection_ineWdd": {
-      "type": "featured-collection",
-      "name": "Featured Collection",
-      "settings": {
-        "subheading": "Couture Collection",
-        "heading": "TRADITIONAL WEAR",
-        "description": "The latest collection. Handcrafted heirloom couture.",
-        "collection": "traditional-wear",
         "products_to_show": 4,
         "button_text": "SHOP ALL"
       }
@@ -158,11 +134,9 @@
     "featured_collection",
     "featured_collection_jqeicX",
     "featured_collection_JjgkfG",
-    "featured_collection_XqhqxJ",
     "featured_collection_j3kgqD",
     "featured_collection_r9Wj9j",
     "featured_collection_NxVkD4",
-    "featured_collection_ineWdd",
     "editorial_banners",
     "testimonials",
     "newsletter"
