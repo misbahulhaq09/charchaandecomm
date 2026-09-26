@@ -1,0 +1,780 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CHAR CHAAND | Haute Couture</title>
+<!-- Tailwind CSS v3 with Forms & Container Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Cormorant Garamond (Editorial Luxury Serif) & Montserrat (Clean Sans) -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Montserrat:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet">
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cream: '#FAF7F2',
+              warmIvory: '#F5EFEB',
+              champagne: '#F3ECE4',
+              gold: '#C5A880',
+              deepGold: '#A58253',
+              burgundy: '#4A0E17',
+              deepWine: '#3B0A11',
+              espresso: '#1F1617',
+              mutedGray: '#706465',
+              cardIvory: '#FCFBF9'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            widest: '0.22em',
+            ultra: '0.28em'
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-typography">
+    body {
+      background-color: #FAF7F2;
+      color: #1F1617;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-couture {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    ::selection {
+      background-color: #4A0E17;
+      color: #FAF7F2;
+    }
+  </style>
+<style data-purpose="visual-effects">
+    .circle-glow {
+      box-shadow: 0 0 0 1px rgba(197, 168, 128, 0.4), 0 8px 24px -6px rgba(74, 14, 23, 0.08);
+    }
+    .arch-mask {
+      border-radius: 280px 280px 0 0;
+    }
+    .subtle-border {
+      border-color: rgba(197, 168, 128, 0.3);
+    }
+    /* Char Chaand Hero Model - Editorial Cutout Foreground Layer */
+    .char-chaand-hero-model {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 25;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      pointer-events: none;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .char-chaand-hero-model-img {
+      display: block;
+      width: auto;
+      max-width: none;
+      object-fit: contain;
+      object-position: bottom right;
+      /* Subtle luxury editorial shadow */
+      filter: drop-shadow(-10px 14px 26px rgba(31, 22, 23, 0.12))
+              drop-shadow(-3px 5px 10px rgba(74, 14, 23, 0.07));
+    }
+    @media (min-width: 1024px) {
+      .char-chaand-hero-model {
+        right: 0;
+        bottom: 0;
+        height: calc(100% + 105px);
+        max-height: 820px;
+      }
+      .char-chaand-hero-model-img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .char-chaand-hero-model {
+        right: 0;
+        bottom: 0;
+        height: calc(100% + 65px);
+        max-height: 620px;
+        max-width: 48%;
+      }
+      .char-chaand-hero-model-img {
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: bottom right;
+      }
+    }
+    @media (max-width: 767px) {
+      .char-chaand-hero-model {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: calc(100% + 40px);
+        max-height: 480px;
+        max-width: 52%;
+        z-index: 25;
+      }
+      .char-chaand-hero-model-img {
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: bottom right;
+      }
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-brand-espresso antialiased selection:bg-brand-burgundy selection:text-brand-cream">
+<!-- BEGIN: TopAnnouncementBar -->
+<div class="bg-brand-champagne border-b border-[#EADFCF] py-2 px-4 text-[11px] tracking-widest text-brand-burgundy font-medium uppercase" data-purpose="announcement-strip">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+<div class="flex items-center space-x-6">
+<span class="">Complimentary White Glove Delivery Across India</span>
+<span class="hidden md:inline text-brand-gold">•</span>
+<span class="hidden md:inline">Bespoke Bridal Consultations Available</span>
+</div>
+<div class="flex items-center space-x-6 text-[10px] tracking-widest">
+<a class="hover:text-brand-deepWine transition-colors" href="#track">Track Order</a>
+<span class="text-brand-gold">|</span>
+<a class="hover:text-brand-deepWine transition-colors" href="#concierge">Private Concierge</a>
+</div>
+</div>
+</div>
+<!-- END: TopAnnouncementBar -->
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#EDE4D8]" data-purpose="main-navigation">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-7 min-h-[5.5rem] flex items-center justify-between">
+<!-- Brand Logo Area -->
+<div class="flex flex-col items-start cursor-pointer py-1">
+<a class="group block" href="#">
+<span class="font-couture text-2xl sm:text-3xl tracking-widest text-brand-burgundy font-medium block uppercase transition-opacity group-hover:opacity-90">
+            CHAR CHAAND
+          </span>
+<span class="text-[9px] tracking-ultra text-brand-gold uppercase block font-semibold -mt-0.5 tracking-[0.28em]">
+            HAUTE COUTURE
+          </span>
+</a>
+</div>
+<!-- Center-Right Nav Links & Right Actions Grouped for Asymmetrical Balance -->
+<div class="flex items-center space-x-6 sm:space-x-8">
+<nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest font-medium text-brand-espresso mr-1">
+<a class="hover:text-brand-burgundy transition-colors" href="#film">Film</a>
+<a class="hover:text-brand-burgundy transition-colors" href="#atelier">Atelier</a>
+<a class="hover:text-brand-burgundy transition-colors" href="#jewellery">Jewellery</a>
+<a class="hover:text-brand-burgundy transition-colors" href="#brand">Brand</a>
+</nav>
+<!-- Right Actions & CTA -->
+<div class="flex items-center space-x-5">
+<!-- Search Icon -->
+<button aria-label="Search" class="p-2 text-brand-espresso hover:text-brand-burgundy transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<!-- Account Icon -->
+<button aria-label="Account" class="p-2 text-brand-espresso hover:text-brand-burgundy transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<!-- Bag Icon with Counter -->
+<button aria-label="Shopping Bag" class="p-2 text-brand-espresso hover:text-brand-burgundy transition-colors relative">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+<span class="absolute top-1 right-0 bg-brand-burgundy text-[#FAF7F2] text-[9px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">0</span>
+</button>
+<!-- Primary CTA Button -->
+<a class="inline-flex items-center px-5 py-2.5 bg-brand-burgundy text-brand-cream border border-brand-gold/40 text-[11px] tracking-widest uppercase font-medium rounded-sm hover:bg-brand-deepWine transition-all shadow-sm" href="#new-arrivals">
+          SHOP NOW
+        </a>
+</div>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative bg-brand-warmIvory overflow-visible border-b border-[#E8DFD3] z-[55]" data-purpose="hero-banner">
+  <!-- Architectural Arch Background Layer (Full bleed) -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <img src="./hero_bg.png" alt="Architectural Arch Background" class="w-full h-full object-cover object-left">
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[460px] lg:min-h-[520px]">
+      <!-- Left Editorial Content (Hero content / text layer) -->
+      <div class="lg:col-span-5 flex flex-col justify-center text-left space-y-4 sm:space-y-6 z-10 max-w-[60%] sm:max-w-none" style="transform: translateX(-80px);">
+        <span class="text-xs uppercase tracking-ultra font-semibold text-brand-gold">
+          AUTUMN / WINTER COUTURE
+        </span>
+        <h1 class="font-couture text-4xl sm:text-6xl lg:text-7xl font-light text-brand-espresso leading-[1.08] tracking-tight">
+          CHAR CHAAND
+        </h1>
+        <p class="font-couture text-xl sm:text-2xl lg:text-3xl italic text-brand-mutedGray font-normal -mt-1 sm:-mt-2">
+          Crafted with Elegance.
+        </p>
+        <p class="text-xs sm:text-sm text-brand-mutedGray tracking-wider font-light max-w-md leading-relaxed">
+          Elevated heirloom couture and sculpted silhouettes, meticulously woven for celebrations of timeless grace.
+        </p>
+        <div class="pt-3 sm:pt-4 flex flex-wrap items-center gap-3 sm:gap-5">
+          <a class="px-6 sm:px-8 py-3 sm:py-3.5 bg-brand-burgundy text-brand-cream border border-brand-gold/50 text-xs tracking-widest uppercase font-medium rounded-sm hover:bg-brand-deepWine transition-all shadow-sm" href="#new-arrivals">
+            SHOP NOW
+          </a>
+          <a class="text-xs uppercase tracking-widest font-semibold text-brand-espresso hover:text-brand-burgundy flex items-center gap-2 group transition-colors py-1.5" href="#atelier">
+            EXPLORE ATELIER <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+      <!-- Right Visual Spacer keeping grid balance -->
+      <div class="lg:col-span-7 hidden lg:block pointer-events-none min-h-[460px]"></div>
+    </div>
+  </div>
+
+  <!-- Female Model Cutout Foreground Layer (Independent DOM Layer) -->
+  <div class="char-chaand-hero-model pointer-events-none" aria-hidden="true">
+    <img 
+      src="./char_chaand_model.png" 
+      alt="Char Chaand Haute Couture Model" 
+      class="char-chaand-hero-model-img"
+    />
+  </div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: CircularCategories -->
+<section class="py-14 bg-brand-cream border-b border-[#EDE4D8]" data-purpose="circular-category-navigation">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 sm:gap-8 justify-items-center">
+<!-- Category 1 -->
+<a class="group flex flex-col items-center text-center space-y-3" href="#indo-western">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+<div class="w-full h-full rounded-full overflow-hidden relative">
+<img alt="Indo Western" class="w-full h-full object-cover object-[20%_25%] transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABe1FtAyPtyIPLFjiMxXn4bYIaBnOIKiXWmEHSLfiRapTd8gqozoHumkQXWJiDQk86Onlrd3QhuYaYZ7SRqrrvwp9BqfpRIEHAM8oh92-DacTr4uDb7jlP3_F4JhG0QSMhI6bUTiP4l-MysXNpxcDzPZZV_7rtyUsaKzvZYzriC7Y_CxOYJWd3x0mYvwwq5_y3g20T_DKeDfYsR7003Gy49sAjWZPko2omyjD8anhQAQf51KwcGdyc">
+</div>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Indo Western</span>
+</a>
+<!-- Category 2 -->
+<a class="group flex flex-col items-center text-center space-y-3" href="#traditional-suits">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+<div class="w-full h-full rounded-full overflow-hidden relative">
+<img alt="Traditional Suits" class="w-full h-full object-cover object-[15%_32%] transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCe7tGgR-6t2Meu-MWBj_cep-Mw8MlhWTDo1F0wv5kE_jgtaavV83Rm9HiAXyhlTa0f8GqLUXbszpxTPj7o-rTYLZ0jZbIqMv82l9f_oLm33XDXVfw6eHTTQ-H1u5EF1A6Wd4Abs2mWrup5p9Cnopi1H1xxitTWCtYZsFpWYpwc4CraPjczeZE577O7LfpbOZkHcy0K1UlIMR3xbE2snF-H0nP4SUpFBGaMgGrthOjyJN4WkxGMW95">
+</div>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Traditional Suits</span>
+</a>
+<!-- Category 3 -->
+<a class="group flex flex-col items-center text-center space-y-3" href="#mens-formal">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+<div class="w-full h-full rounded-full overflow-hidden relative">
+<img alt="Men's Formal" class="w-full h-full object-cover object-[75%_32%] transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIqgW93JALU-wyqQgs95qtzpDq-SCoX9h9mKwUVlSARwpgI6j35X35MTayCC8-KBQOkEozu7dbJGKnPpIB6yGPnIE9MgtzPLYG-dqi0HpatCQWMOrP1kBLHADR3rEP3gSnMzyMnvdUvIjqW6-x_PcA6nrpVl_9s8yNO11SySXHjfFLu3VoFYrCHIsIcvF-xn-LJEKppRScMbV65siXdPcsG7wVdpLHfSUVE8D1k2Csur393H8PXeWP">
+</div>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Men's Formal</span>
+</a>
+<!-- Category 4 -->
+<a class="group flex flex-col items-center text-center space-y-3" href="#womens-formal">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+<div class="w-full h-full rounded-full overflow-hidden relative">
+<img alt="Women's Formal" class="w-full h-full object-cover object-[70%_15%] transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzbIwzc6XPEjD_TseettDgXcD-IRaTf2ebjsqgw9aE-UBd5-b2xSMhufbWuAzTDSzluGgP_4LVq-RIYwKBSJkhpjFjMFYCh0Sh_dHYbjWlTCK9z_DDxxqZhfsJbUYn-0gfTASA6f2ESQ0ZjPos7RAD-_EV2wlrwGW-uVW6Qg4AqVyqyAgGc8ffquriX0h90FHFVrwWUPEZyoiNxbUnfod_tBhhxgkiR85DuArPh_s11g7f2yhhut53">
+</div>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Women's Formal</span>
+</a>
+<!-- Category 5 -->
+<a class="group flex flex-col items-center text-center space-y-3" href="#perfumes">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+<div class="w-full h-full rounded-full overflow-hidden relative">
+<img alt="Perfumes" class="w-full h-full object-cover object-[62%_32%] transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXaXHZ61Ocln631CPrWfqLAzOACJPhrPv9K2t2FS2CIR99qkTrpScxJDjvBV_H1Nawzi41G3QjCX436sG0-8u9xjI1o5E6tj7XqVAdGhBBzQMYEtHr9DyeBSzeVlHdAvFo71AolCoIrRtVCcmhy-v-BXqjR9_Vk_xuFAe6C9pSll3SaqUl9bHKg5rDzAUQbQgHYYmMrvtdXq-HAVk9oUoXGd01A4J6di43-VXzqCcufBIhlbMx4iox">
+</div>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Perfumes</span>
+</a>
+<!-- Category 6 -->
+<a class="group flex flex-col items-center text-center space-y-3" href="#jewellery">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+<div class="w-full h-full rounded-full overflow-hidden relative">
+<img alt="Jewellery" class="w-full h-full object-cover object-[78%_80%] transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACHGFAFyMgYR9FiQyiGVAWXUySEAWc2gACIMoBXLoVTe6rb_6hlX-qXx20EzXPOg4hBqgLI_UCB7jxfklqkURUGcIBxh8jNkGSueDu6S3qZyMeIr-3qjDC-_fwhueBmwghMbl86QnOyY7_p_DwMWSWnIOP15OGK4_WlsuC4By76_l28Ca6Wy_lXhcyUOAp3Di-vTzPxayScvAXe0My9SJKYmOKhzM8xVEr8Z2AXeL7s_UE2f3ZL5YB">
+</div>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Jewellery</span>
+</a>
+<!-- Category 7 -->
+<a class="group flex flex-col items-center text-center space-y-3 col-span-3 sm:col-span-2 md:col-span-1" href="#bags">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+<div class="w-full h-full rounded-full overflow-hidden relative">
+<img alt="Bags" class="w-full h-full object-cover object-[50%_32%] transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW6r_wvSv1C-RwQqH6k1JAAybcbBeu3l0fvwlUx_tuJFn7po_D66OgOObw6rEJbJsPgxA9WVqbFtT-c4OeGpmvCQafxGGDWu-kj-pz53wFIFQYzM4BvO-NE-qf0jGPcy0_Lfps5pSEyFq1u6iyNu2FG1wJdXzycIqM4rtTO1vmRmRBv9IdNyHAcybSmi3wzSPApymHp9Q8__d40-VbxRBSi6dHKnCll7_n_Oom5dls1Ldip9H1uW05">
+</div>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Bags</span>
+</a>
+</div>
+</div>
+</section>
+<!-- END: CircularCategories -->
+<!-- BEGIN: NewArrivalsSection -->
+<section class="py-20 bg-brand-cardIvory border-b border-[#EDE4D8]" data-purpose="featured-products" id="new-arrivals">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<span class="text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-1">Couture Collection</span>
+<h2 class="font-couture text-4xl sm:text-5xl font-light text-brand-espresso">New Arrivals</h2>
+<p class="text-xs sm:text-sm text-brand-mutedGray tracking-wide mt-2">The latest collection. Handcrafted heirloom couture.</p>
+</div>
+<div>
+<a class="inline-block px-7 py-2.5 bg-brand-burgundy text-brand-cream border border-brand-gold/40 text-xs tracking-widest uppercase font-medium rounded-sm hover:bg-brand-deepWine transition-all" href="#shop-all">
+            SHOP ALL
+          </a>
+</div>
+</div>
+<!-- 4-Column Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Product Card 1 -->
+<div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70">
+<div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+<img alt="Zari Embroidered Raw Silk Anarkali" class="w-full h-full object-cover object-[37%_43%] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRz53MKTWQYIB9vJHiyVnAhZXR2A9JbyHC_gIXBHaUTdq4dWmBXGq2uD_CaMfqV6uJDLP3jffhYRW-LjGMT5SkPi5DzZnxf_n05rQ6iSq0ktQd8uxwqEueyoMgMicZ3EMvJ9UmIwTeb2AtoVnQHpW85UJK4eHB35gAoAhwu3LzX3a0vPmYzulyixyIZtN7p7hofTtf8f3XTJG2vKl0EF6r3olj4xEsx25ZVSCjLJIvVapzq3ggVbiS">
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Bespoke</span>
+</div>
+<h3 class="font-couture text-lg font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors">
+            Zari Embroidered Raw Silk Anarkali
+          </h3>
+<p class="text-xs tracking-widest text-brand-mutedGray mt-1 font-light">₹89,000</p>
+</div>
+<!-- Product Card 2 -->
+<div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70">
+<div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+<img alt="Velvet Sherwani with Heritage Dabka" class="w-full h-full object-cover object-[53%_43%] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ3csvLvHCgHiUpX7ZOWVku3qH9MGniNpHr6fnYlKahCpPcYdPG8F1bif-GASoWGkH6iMAFtdAT57mudd0W7IZ7neABKe14UDaSs0axbk0V-0C8LCa6IPY5KvH62VZmLYHQqBgy7QgdzGjsKENoJ45Q-4dbSp2rb9-E3sMM3fYut6m0sce3SZAA7xdEUWVq-zue6OCtAhq-RCkATk2tLfPpKyxc-UKlnNjeIUFLvMZ7hS1ik3875bT">
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Royal Edit</span>
+</div>
+<h3 class="font-couture text-lg font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors">
+            Velvet Sherwani with Heritage Dabka
+          </h3>
+<p class="text-xs tracking-widest text-brand-mutedGray mt-1 font-light">₹1,25,000</p>
+</div>
+<!-- Product Card 3 -->
+<div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70">
+<div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+<img alt="Handwoven Tissue Silk Saree" class="w-full h-full object-cover object-[70%_43%] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRgyDfDVzW5GpZRJe8bOMfXNkpHFldT7kk88nhd3NZayO6kI24uCPhse5utcj8iIZm-aAcWIN2YOBmmJmbfXbotEMiLgYPUn9P3STjtveOLh8sWany8z8qw_-NX7VGJQxNbVDS05rQJCw9tcchpPNVsfx9_aHHg4Z6yuh47-7k1v0ypMri69ZoAMYaJSr4FsljRncqwYI_vs_BWvCwqCztTgMmOpUeF-6HEjEICdAU6I4g3zckkeLn">
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+</div>
+<h3 class="font-couture text-lg font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors">
+            Handwoven Tissue Silk Saree
+          </h3>
+<p class="text-xs tracking-widest text-brand-mutedGray mt-1 font-light">₹64,000</p>
+</div>
+<!-- Product Card 4 -->
+<div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70">
+<div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+<img alt="Sculpted Bridal Lehenga Set" class="w-full h-full object-cover object-[86%_43%] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuF7JCkzuSXZyiXJN3oGi_XVX6RhWYLMQPC0Hgeq-WH6K9D_rbkpLawFF8PDLjQ_Y3w74MzjyTskkuhAdiqqZPyNnKnvn1sh101xTNdpjUtWRK7NGIujPJM_A2aK3HPFXRN0OvvmgRjl5OMVCbW-_R8nIpXnmquKdwuyeoX_HvtanDq_ZjkylgVrYgLEOqXcFRok5kOQwXcNRRLZmpgmRu-3T2EXlgBtpop48F7lY_A5oXBoJrjW2T">
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Bridal</span>
+</div>
+<h3 class="font-couture text-lg font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors">
+            Sculpted Bridal Lehenga Set
+          </h3>
+<p class="text-xs tracking-widest text-brand-mutedGray mt-1 font-light">₹1,95,000</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: NewArrivalsSection -->
+<!-- BEGIN: EditorialBanners -->
+<section class="py-16 bg-brand-cream" data-purpose="editorial-split-banners">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Left Editorial Promo: The Bridal Edit -->
+<div class="relative overflow-hidden bg-[#241315] text-[#FAF7F2] rounded-sm p-8 sm:p-12 flex flex-col justify-between min-h-[340px] border border-brand-burgundy">
+<div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-35 mix-blend-luminosity pointer-events-none">
+<img alt="Bridal Couture" class="w-full h-full object-cover object-[37%_58%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEhhtlGEL9oC1DFF4n_L7NlB6MdG8wqTKrG5t7n7XrYNX-lDa6PNMysIfNTwgu8iNre92A3HbB8tnmSVBbV_1xI_c5R0gng6ClmKo-N1qlKrqW0ToThnj0NKdz5gGo1NYJLRA-obul75FZ1ILiXbgBkGVo3YIjp1XOJC9JHlI5vatRBnP-mFQa5TMDomj7DoU71u6VPmmRy1X5-bO6Vq0mTk4dmxxzbLbRLP_X2PayFT2QlhWsPd0f">
+</div>
+<div class="relative z-10">
+<span class="text-[10px] tracking-ultra uppercase text-brand-gold block font-semibold mb-2">CURATED SELECTION</span>
+<h3 class="font-couture text-3xl sm:text-4xl font-normal leading-snug">The Bridal Edit</h3>
+<p class="text-xs sm:text-sm text-[#DFD3C7] font-light mt-2 max-w-xs">
+              Intricate needlecraft &amp; regal silhouettes tailored for celebratory majesty.
+            </p>
+</div>
+<div class="relative z-10 pt-8">
+<a class="inline-flex items-center text-xs tracking-widest uppercase font-semibold text-brand-gold hover:text-white transition-colors group" href="#bridal-edit">
+              EXPLORE COUTURE <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Right Editorial Promo: Heritage Jewellery -->
+<div class="relative overflow-hidden bg-[#ECE3D7] text-brand-espresso rounded-sm p-8 sm:p-12 flex flex-col justify-between min-h-[340px] border border-brand-gold/40">
+<div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-40 mix-blend-multiply pointer-events-none">
+<img alt="Heritage Polki Jewellery" class="w-full h-full object-cover object-[78%_58%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBihdG2fovscu6JlQdOJpSjR6cdQhryrpm6EBiP1zPv7rIuqNxCfCt1eDwlW-sWKVzZxOYFP2JRcl2V6gL7gwDauAswlYwGr1Z6OEy6O_9FxEpf_F9ZMOqqjc-kub8aKzbCknF6dOLuwwCKTIOPh-61EKPTEz6uLspbztz81iAwmCEi_Jc49mOVV0Etu-7N9wUIjt67w_ciPuJ4jrFoChPRfY9VOEmY1wJ71AyqqZKqI7mR6ZBzSZex">
+</div>
+<div class="relative z-10">
+<span class="text-[10px] tracking-ultra uppercase text-brand-burgundy block font-semibold mb-2">POLKI &amp; KUNDAN</span>
+<h3 class="font-couture text-3xl sm:text-4xl font-normal leading-snug">Heritage Jewellery</h3>
+<p class="text-xs sm:text-sm text-brand-mutedGray font-light mt-2 max-w-xs">
+              Handcrafted Polki &amp; Kundan masterpieces that preserve ancestral legacy.
+            </p>
+</div>
+<div class="relative z-10 pt-8">
+<a class="inline-flex items-center text-xs tracking-widest uppercase font-semibold text-brand-burgundy hover:text-brand-deepWine transition-colors group" href="#jewellery">
+              DISCOVER JEWELLERY <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: EditorialBanners -->
+<!-- BEGIN: AtelierSection -->
+<section class="py-24 bg-brand-warmIvory border-y border-[#EDE4D8]" data-purpose="craft-atelier-showcase" id="atelier">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="text-xs uppercase tracking-ultra text-brand-burgundy font-semibold">THE ATELIER</span>
+<h2 class="font-couture text-4xl sm:text-5xl font-light text-brand-espresso mt-2">
+          Centuries of Indian Craftsmanship Reimagined
+        </h2>
+<div class="w-12 h-px bg-brand-gold mx-auto my-4"></div>
+<p class="text-xs sm:text-sm text-brand-mutedGray tracking-wider font-light leading-relaxed">
+          Every Char Chaand garment represents hundreds of hours spent by generational karigars reviving royal needlework traditions.
+        </p>
+</div>
+<!-- 3 Premium Craft Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Craft 1: Adda Work -->
+<div class="bg-brand-cardIvory border border-brand-gold/35 rounded-sm p-5 hover:shadow-md transition-all">
+<div class="w-full aspect-[4/5] bg-[#E9E0D4] overflow-hidden rounded-sm mb-5 relative">
+<img alt="Adda Work Artisans" class="w-full h-full object-cover object-[50%_79%] hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM6K0vvLvPVki2qMsztX2pakUMcaaPbYy7iq486MjYTr1TlwAz5unlAzRWV1vNjpAAAza-czGfu03yzddFkQyU4BnXyP__cHUpWa1NaMguNXcehqxnxXkv-0OPTg34TELctRLgdoQBptWYAGGlvKcUm4o2VTxofB3776lNOJwfKLkzPoi7HD7dD18MKooOyu2Ue-Tjh65L_g6jhmjbhmQx-Pl3jowT3LjxoPG3v2vQBhl3fFQmFeDL">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+</div>
+<span class="text-[10px] tracking-ultra text-brand-gold font-semibold uppercase block mb-1">Technique I</span>
+<h3 class="font-couture text-2xl font-medium text-brand-espresso mb-2">ADDA WORK</h3>
+<p class="text-xs text-brand-mutedGray font-light leading-relaxed">
+            Master artisans hand-stretching fine silks on traditional wooden addas, preserving tension for uncompromised micro-embroidery precision.
+          </p>
+</div>
+<!-- Craft 2: Aari Embroidery -->
+<div class="bg-brand-cardIvory border border-brand-gold/35 rounded-sm p-5 hover:shadow-md transition-all">
+<div class="w-full aspect-[4/5] bg-[#E9E0D4] overflow-hidden rounded-sm mb-5 relative">
+<img alt="Aari Embroidery Needlework" class="w-full h-full object-cover object-[37%_79%] hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzL-s2B7sn4EZdq4yQvvVJrut-6vbgE4VRKfA5n3cdLSP9Cyb0aHFZiIx12nxLD3SbFzqRca0j_SqbYSZD6DW-V00_y9JehAQCb5ahKJV3nNPuEMMqxpc2_YvA2O2YnKYtCq4H8Y833Oh96oYC80sWBvVUY0cvNm4MW6_lkKitIs6Q2xbSbqGTnAOSrMd1282LuA-LssDllLH7C4qaSi2XqeID29pOn45vsrKpRHWz05RGSaUtR50T">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+</div>
+<span class="text-[10px] tracking-ultra text-brand-gold font-semibold uppercase block mb-1">Technique II</span>
+<h3 class="font-couture text-2xl font-medium text-brand-espresso mb-2">AARI EMBROIDERY</h3>
+<p class="text-xs text-brand-mutedGray font-light leading-relaxed">
+            Fine hooked-needle chain stitching cultivated in imperial royal courts, lending liquid dimension to regal flora and sacred geometry.
+          </p>
+</div>
+<!-- Craft 3: Zardozi Craft -->
+<div class="bg-brand-cardIvory border border-brand-gold/35 rounded-sm p-5 hover:shadow-md transition-all">
+<div class="w-full aspect-[4/5] bg-[#E9E0D4] overflow-hidden rounded-sm mb-5 relative">
+<img alt="Zardozi Gilded Threads" class="w-full h-full object-cover object-[78%_79%] hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABLoTWg-BenEmgyRSLWNHd5A8jGSouCMI5MxtTDwhsk5xSWWvhi_ekUGsS8osoKs3s36dzK0XVUGmkCWeBASiXi_Itf5pL5OCR359QnJUSuE5fgd0tTKo0EsvdhvyagUJkVTc00atqVQZmFdGWC7a_FM3fiDRllaM2nMWrc2E-b_HO2ADy1sVoQD-dQ0wzKitvxGHTGbvLqm9Qto-8LncKE0n9OdwXY5nhoqynh-b10ZJYgpvnIfON">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+</div>
+<span class="text-[10px] tracking-ultra text-brand-gold font-semibold uppercase block mb-1">Technique III</span>
+<h3 class="font-couture text-2xl font-medium text-brand-espresso mb-2">ZARDOZI CRAFT</h3>
+<p class="text-xs text-brand-mutedGray font-light leading-relaxed">
+            Gilded metallic wires woven with Basra pearls and semi-precious stones, sculpting heirloom garments destined to span across generations.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AtelierSection -->
+<!-- BEGIN: LargeBrandFeature -->
+<section class="py-20 bg-brand-cream overflow-hidden" data-purpose="brand-manifesto-split" id="brand">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- Left Editorial Showcase Image -->
+<div class="lg:col-span-6 relative">
+<div class="relative w-full aspect-[4/5] overflow-hidden rounded-sm border border-brand-gold/40 shadow-sm">
+<img alt="Char Chaand Haute Couture Manifesto" class="w-full h-full object-cover object-[92%_79%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSbgtl5SOw_6g1P28MoTUDKtbezwLf8OwaW-CgYhJAVjhAWHEWhuyG7Q0H9kqsjZjuASTnWfgCEN1gTl9E7In8XSc3qaQWqo7OxwVvRvK7xCn8dvANwU7IzP3ZkjOMCC2Nm-HebcBmn6AkWM6onBe1S4mXFgYdMZ03C11_Bm6511sHHlZQzJ40fT0c_wOpZ6vbq7wJEwaRRMgVL905Qempy-XGXqGv8W0jmDvCrSJ79g5ItrnJ-cWt">
+</div>
+<div class="absolute -bottom-6 -left-6 bg-brand-champagne border border-brand-gold/50 p-6 hidden sm:block max-w-[240px]">
+<p class="font-couture text-sm text-brand-burgundy italic leading-tight">
+              "To adorn with elegance is to celebrate the soul's quiet majesty."
+            </p>
+</div>
+</div>
+<!-- Right Text Manifesto -->
+<div class="lg:col-span-6 flex flex-col justify-center space-y-6">
+<span class="text-xs uppercase tracking-ultra font-semibold text-brand-gold">
+            OUR PHILOSOPHY
+          </span>
+<h2 class="font-couture text-4xl sm:text-5xl lg:text-6xl font-light text-brand-espresso leading-tight">
+            Crafted To Be Timeless
+          </h2>
+<div class="w-12 h-px bg-brand-gold"></div>
+<p class="text-xs sm:text-sm text-brand-mutedGray tracking-wide font-light leading-relaxed">
+            Every stitch reflects months of meticulous devotion by generational karigars. Char Chaand marries royal Indian heritage with contemporary couture silhouettes, delivering garments that breathe with grace and regal ease.
+          </p>
+<p class="text-xs sm:text-sm text-brand-mutedGray tracking-wide font-light leading-relaxed">
+            From hand-dyed organzas to custom loom-woven brocades, our creations are not merely apparel—they are heirlooms woven for memory.
+          </p>
+<div class="pt-2">
+<a class="inline-flex items-center text-xs tracking-widest uppercase font-semibold text-brand-burgundy hover:text-brand-deepWine pb-1 border-b border-brand-gold/60 transition-colors" href="#atelier">
+              DISCOVER MORE →
+            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: LargeBrandFeature -->
+<!-- BEGIN: ClientTestimonials -->
+<section class="py-20 bg-brand-cardIvory border-y border-[#EDE4D8]" data-purpose="testimonials">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-14">
+<span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold">PATRON EXPERIENCES</span>
+<h2 class="font-couture text-3xl sm:text-4xl font-light text-brand-espresso mt-1">What Our Clients Say</h2>
+<div class="w-10 h-px bg-brand-gold mx-auto my-3"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review 1 -->
+<div class="bg-brand-cream border border-brand-gold/30 p-8 rounded-sm flex flex-col justify-between">
+<div>
+<div class="flex text-brand-deepGold space-x-1 mb-4 text-xs">
+<span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span>
+</div>
+<p class="font-couture text-lg text-brand-espresso italic font-light leading-snug">
+              "The craftsmanship on my bridal lehenga surpassed every expectation. The weight, the movement, the finish—a true heirloom piece."
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-brand-gold/20 flex items-center justify-between">
+<div>
+<p class="text-xs uppercase tracking-widest font-semibold text-brand-burgundy">Gayatri M.</p>
+<p class="text-[10px] text-brand-mutedGray uppercase tracking-widest font-light">New Delhi</p>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-brand-gold">Verified Client</span>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="bg-brand-cream border border-brand-gold/30 p-8 rounded-sm flex flex-col justify-between">
+<div>
+<div class="flex text-brand-deepGold space-x-1 mb-4 text-xs">
+<span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span>
+</div>
+<p class="font-couture text-lg text-brand-espresso italic font-light leading-snug">
+              "Impeccable fitting and deeply thoughtful atelier consultations. Char Chaand delivered effortless luxury from first swatch to final drape."
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-brand-gold/20 flex items-center justify-between">
+<div>
+<p class="text-xs uppercase tracking-widest font-semibold text-brand-burgundy">Sunaina R.</p>
+<p class="text-[10px] text-brand-mutedGray uppercase tracking-widest font-light">Mumbai</p>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-brand-gold">Bespoke Couture</span>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="bg-brand-cream border border-brand-gold/30 p-8 rounded-sm flex flex-col justify-between">
+<div>
+<div class="flex text-brand-deepGold space-x-1 mb-4 text-xs">
+<span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span>
+</div>
+<p class="font-couture text-lg text-brand-espresso italic font-light leading-snug">
+              "The Zardozi work is breathtaking in person. The subtlety and balance of shades sets a new benchmark in contemporary Indian couture."
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-brand-gold/20 flex items-center justify-between">
+<div>
+<p class="text-xs uppercase tracking-widest font-semibold text-brand-burgundy">Ananya K.</p>
+<p class="text-[10px] text-brand-mutedGray uppercase tracking-widest font-light">Dubai</p>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-brand-gold">Verified Client</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ClientTestimonials -->
+<!-- BEGIN: SocialGallery -->
+<section class="py-16 bg-brand-cream" data-purpose="instagram-feed">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+<h3 class="text-xs uppercase tracking-ultra font-semibold text-brand-burgundy">FOLLOW OUR JOURNEY</h3>
+<a class="font-couture text-2xl text-brand-espresso hover:text-brand-burgundy transition-colors block mt-1" href="https://instagram.com" rel="noopener" target="_blank">
+        @charchaand.raipur
+      </a>
+</div>
+<!-- 6 Vignettes -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 px-4 max-w-7xl mx-auto">
+<div class="aspect-square relative overflow-hidden group">
+<img alt="Runway detail" class="w-full h-full object-cover object-[7%_79%] group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjBYw0p7eHKtcNyaY3CtgBojnX6v4rzs98BzPQVjH1QlMsxvuCI-qi1oIili220Tb8kd5RG0B2_rvrCmDKuMltOhWmns7hFZlnhPGl_ucZdaFXYbK1-NwaEc5Vn7WzJL6RY2vw1z4nNL5ni4e4UjfZYF6lzqqlblJ4aIa4U0i4rcksaOZIjnjY3caierzg9gEpn3aziu8hlmAbQ1KUWC4C4U271t2A6MFD4Z3M96W8x_QEATJ51KfY">
+<div class="absolute inset-0 bg-brand-burgundy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs">
+<span class="">View Look</span>
+</div>
+</div>
+<div class="aspect-square relative overflow-hidden group">
+<img alt="Atelier detail" class="w-full h-full object-cover object-[22%_79%] group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTwV4LRyzWj3fORSIHSInaSkr-vQb7md_pqimglv268M_dnnfkb0bjUbAV5Qb8CLuob_SfRwnlB55PY-bFru1a41c_BtvJbT2ux3AQVyLiqnri8jQvbSCfildFNxLL6OnjfypllgT_qTdxPCe3PyCePfNpbWin4z36JxYnwLvdf9waosqh_uxYHHaicWrmdRlITtjE8q1xRI7zHwCcDMscKNrgnk3BfjDk2qSmnYOqXEP0UJjarBJW">
+<div class="absolute inset-0 bg-brand-burgundy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs">
+<span class="">View Look</span>
+</div>
+</div>
+<div class="aspect-square relative overflow-hidden group">
+<img alt="Zardozi handiwork" class="w-full h-full object-cover object-[37%_79%] group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdmSXBFzMI1zBXMulFcXJjQ-_t8jaktyLCfluGHR9RbJ4WIuyXjiycKmMIM5r8J5TnUl0hhizjJA7aR7KS6NNuLPXeZNmtvvl2ezV7KpHRNQ1JuQ1VvUbsXvTBnoLgXXuPBgrPQmeFyD0ihAbhtBH00QjEedNQxiQkoFZXYTVVYT47YUX09eyMjMnsHBKcUPA56yZq4wJQQaYBWzh9vPHctDLdX37OuYUyJ4YDas8YB-AqFn5PMuGz">
+<div class="absolute inset-0 bg-brand-burgundy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs">
+<span class="">View Look</span>
+</div>
+</div>
+<div class="aspect-square relative overflow-hidden group">
+<img alt="Bridal moment" class="w-full h-full object-cover object-[50%_79%] group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHMvZ5P645eXuagu5G6VCEdWgynSzMEhTBz3novRhgk8AgfL1f2Fs15pkzy6p1cJ24i2opje4ztAo2ZQdCIFqgM3ACT4wwBZ7gfyttTFlnqdzsV7U_y4ndXC4ck4jb1tsunPIrG2X39LCM4jaqNrCHE_r9RyU2wput_TuYml0_QgINk2KlRXYWPMA7OZE99op7XGysAP1CMB7Fkv62f-v2MV_EV6X6sKL14f5carqePG-z9I6ryuGQ">
+<div class="absolute inset-0 bg-brand-burgundy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs">
+<span class="">View Look</span>
+</div>
+</div>
+<div class="aspect-square relative overflow-hidden group">
+<img alt="Jewellery close-up" class="w-full h-full object-cover object-[78%_79%] group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbZ28GVY2yvLbMVjFv7Ov3B-EGSf3qr7LeGpjXoEhlyr3UzRNCVYBQPsC0K8nskIzOICjURuRu0dNGvgcPd2OJdrH_2cgeWkH4N4ZLCwG8MjBJnAYL0Rhh6o8JV314bYYRzb_zF1xdm1u3ZF6K6ILMJXYanZNFR5VUw0VMRadTMiOw1tSdrD96m4nPx9G9r-0LxnHpNYeStq1Hw3jkoindOCg1M69t6RQ7W3nHGXADXDm4_Ex6Vm0v">
+<div class="absolute inset-0 bg-brand-burgundy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs">
+<span class="">View Look</span>
+</div>
+</div>
+<div class="aspect-square relative overflow-hidden group">
+<img alt="Editorial portrait" class="w-full h-full object-cover object-[92%_79%] group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-gkS3dyWlt59N54-DoQF9WbTQ2ZSWw-sD_7xzhLjJnz6iSzirIJPzV5FBWP8BnLxPMTpmQdQA7OMJgZNxR00fMOLcmvQRqVm9J5O8RW2e7V2w0E7lR8m5VEbdjxbvdqP9sm3Oifhex76AqouuAkIyzvIgsy2D5ts4w0weAvl28v6J3Yh2sp2HvLnP0wicI5l-xsxGCX-P3FGbRA6cIC2F8l9i-wMpMVYBxmjCOR68kZzBZiBEcSog">
+<div class="absolute inset-0 bg-brand-burgundy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs">
+<span class="">View Look</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SocialGallery -->
+<!-- BEGIN: NewsletterSection -->
+<section class="py-16 bg-brand-champagne border-t border-[#E8DFD3]" data-purpose="newsletter-subscription">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+<span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold block mb-2">PRIVILEGED ACCESS</span>
+<h2 class="font-couture text-3xl sm:text-4xl text-brand-espresso font-normal">
+        Stay In The World of CHAR CHAAND
+      </h2>
+<p class="text-xs sm:text-sm text-brand-mutedGray font-light mt-2 max-w-lg mx-auto">
+        Subscribe for private atelier previews, bespoke trunk shows, and seasonal reveals.
+      </p>
+<form class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault();">
+<label class="sr-only" for="newsletter-email">Email Address</label>
+<input class="w-full sm:flex-1 px-4 py-3 bg-brand-cream border border-brand-gold/40 text-brand-espresso text-xs placeholder:text-brand-mutedGray/60 focus:outline-none focus:border-brand-burgundy rounded-sm" id="newsletter-email" placeholder="Enter your email address" required="" type="email">
+<button class="w-full sm:w-auto px-8 py-3 bg-brand-burgundy text-brand-cream border border-brand-gold/40 text-xs tracking-widest uppercase font-semibold rounded-sm hover:bg-brand-deepWine transition-all" type="submit">
+          SUBSCRIBE
+        </button>
+</form>
+</div>
+</section>
+<!-- END: NewsletterSection -->
+<!-- BEGIN: Footer -->
+<footer class="bg-[#181112] text-[#EFE7DD] pt-16 pb-12 border-t border-brand-burgundy" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Top Row: Brand & Summary -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+<div class="md:col-span-4 flex flex-col space-y-4">
+<div>
+<span class="font-couture text-2xl tracking-widest text-[#FAF7F2] uppercase block font-normal">
+              CHAR CHAAND
+            </span>
+<span class="text-[9px] tracking-ultra text-brand-gold uppercase block font-medium">
+              HAUTE COUTURE
+            </span>
+</div>
+<p class="text-xs text-[#B5A89E] font-light leading-relaxed max-w-sm">
+            Handcrafted Indian bridal heirlooms, bespoke menswear, and heritage jewellery. Meticulously brought to life in Raipur for discerning patrons worldwide.
+          </p>
+<!-- Social Icons -->
+<div class="flex items-center space-x-4 pt-2 text-[#C5A880]">
+<a aria-label="Instagram" class="hover:text-white transition-colors" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a aria-label="Pinterest" class="hover:text-white transition-colors" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.334 1.357-.056.208-.182.253-.419.152-1.564-.728-2.541-3.013-2.541-4.851 0-3.947 2.868-7.575 8.271-7.575 4.341 0 7.714 3.094 7.714 7.228 0 4.313-2.72 7.784-6.495 7.784-1.268 0-2.46-.659-2.868-1.439l-.779 2.968c-.282 1.083-1.045 2.44-1.557 3.275 1.127.348 2.327.537 3.573.537 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"></path></svg>
+</a>
+<a aria-label="YouTube" class="hover:text-white transition-colors" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Column: Shop -->
+<div class="md:col-span-2 space-y-3">
+<h4 class="text-[11px] uppercase tracking-ultra text-brand-gold font-semibold">SHOP</h4>
+<ul class="space-y-2 text-xs text-[#B5A89E] font-light">
+<li class=""><a class="hover:text-white transition-colors" href="#">Bridal Lehengas</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Pret &amp; Festive</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Menswear Sherwanis</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Heritage Polki Jewellery</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Pashmina &amp; Shawls</a></li>
+</ul>
+</div>
+<!-- Column: Atelier -->
+<div class="md:col-span-2 space-y-3">
+<h4 class="text-[11px] uppercase tracking-ultra text-brand-gold font-semibold">ATELIER</h4>
+<ul class="space-y-2 text-xs text-[#B5A89E] font-light">
+<li class=""><a class="hover:text-white transition-colors" href="#">Our Master Crafts</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Bespoke Fitting</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Bridal Appointment</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">The Heritage Archive</a></li>
+</ul>
+</div>
+<!-- Column: Customer Care -->
+<div class="md:col-span-2 space-y-3">
+<h4 class="text-[11px] uppercase tracking-ultra text-brand-gold font-semibold">CUSTOMER CARE</h4>
+<ul class="space-y-2 text-xs text-[#B5A89E] font-light">
+<li class=""><a class="hover:text-white transition-colors" href="#">Private Concierge</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">White Glove Delivery</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Garment Preservation</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Order Tracking</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">FAQs</a></li>
+</ul>
+</div>
+<!-- Column: Legal -->
+<div class="md:col-span-2 space-y-3">
+<h4 class="text-[11px] uppercase tracking-ultra text-brand-gold font-semibold">LEGAL</h4>
+<ul class="space-y-2 text-xs text-[#B5A89E] font-light">
+<li class=""><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Authenticity Guarantee</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Store Locator</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar: Copyright & Payment Marks -->
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between text-[10px] tracking-widest text-[#8F8177] uppercase gap-4">
+<p class="">© 2026 CHAR CHAAND HAUTE COUTURE. ALL RIGHTS RESERVED.</p>
+<div class="flex items-center space-x-6">
+<span class="">VISA</span>
+<span class="">MASTERCARD</span>
+<span class="">AMEX</span>
+<span class="">UPI SECURE</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+
+
+
+
+
+
+
+
+</body></html>
