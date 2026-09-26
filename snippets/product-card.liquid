@@ -1,0 +1,85 @@
+{%- comment -%}
+  Char Chaand Haute Couture — Reusable Product Card
+  Accepts:
+  - product: {Object} Product Liquid object (optional, handles fallback)
+{%- endcomment -%}
+
+{%- assign price = product.price | default: 8900000 -%}
+{%- assign compare_at_price = product.compare_at_price -%}
+{%- assign title = product.title | default: 'Zari Embroidered Raw Silk Anarkali' -%}
+{%- assign url = product.url | default: '#' -%}
+{%- assign featured_image = product.featured_media.preview_image | default: product.featured_image -%}
+
+<div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70 relative">
+  <div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+    <a href="{{ url }}" class="block w-full h-full">
+      {%- if featured_image != blank -%}
+        <img
+          src="{{ featured_image | image_url: width: 600 }}"
+          alt="{{ featured_image.alt | default: title | escape }}"
+          loading="lazy"
+          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          width="600"
+          height="800"
+        >
+      {%- else -%}
+        <div class="w-full h-full flex items-center justify-center bg-[#F5ECE1] text-[#706465] text-xs uppercase tracking-widest">
+          Haute Couture Piece
+        </div>
+      {%- endif -%}
+    </a>
+
+    <!-- Wishlist Button -->
+    <button
+      type="button"
+      data-wishlist-btn
+      data-wishlist-handle="{{ product.handle | default: 'couture-sample' }}"
+      data-wishlist-title="{{ title | escape }}"
+      data-wishlist-price="{{ price | money }}"
+      data-wishlist-image="{{ featured_image | image_url: width: 300 }}"
+      data-wishlist-url="{{ url }}"
+      aria-label="Add to Wishlist"
+      class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm cursor-pointer z-10"
+    >
+      {% render 'icon', name: 'heart', class: 'w-4 h-4' %}
+    </button>
+
+    <!-- Badges -->
+    {%- if compare_at_price > price -%}
+      <span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Privilege</span>
+    {%- elsif product.tags contains 'Bespoke' -%}
+      <span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Bespoke</span>
+    {%- elsif product.tags contains 'Royal Edit' -%}
+      <span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Royal Edit</span>
+    {%- elsif product.tags contains 'Bridal' -%}
+      <span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Bridal</span>
+    {%- endif -%}
+  </div>
+
+  <div class="flex flex-col flex-1 justify-between">
+    <a href="{{ url }}" class="block">
+      <h3 class="text-sm font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors uppercase tracking-wider line-clamp-2">
+        {{ title }}
+      </h3>
+    </a>
+    
+    <div class="mt-2 flex items-center justify-between text-xs tracking-widest">
+      <div class="flex items-center gap-2">
+        <span class="text-brand-burgundy font-semibold">{{ price | money }}</span>
+        {%- if compare_at_price > price -%}
+          <span class="text-brand-mutedGray/60 line-through text-[11px]">{{ compare_at_price | money }}</span>
+        {%- endif -%}
+      </div>
+      {%- unless product.available == false -%}
+        <form method="post" action="/cart/add" class="inline">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit" class="text-[10px] uppercase font-semibold text-brand-gold hover:text-brand-burgundy transition-colors">
+            + Quick Secure
+          </button>
+        </form>
+      {%- else -%}
+        <span class="text-[10px] uppercase text-[#BA1A1A]">Archived</span>
+      {%- endunless -%}
+    </div>
+  </div>
+</div>

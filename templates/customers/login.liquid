@@ -1,0 +1,85 @@
+<div class="py-12 sm:py-20 bg-brand-cream">
+  <div class="max-w-md mx-auto px-4 sm:px-6">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-8 sm:p-10 rounded-sm shadow-sm space-y-6 mt-6">
+      
+      <!-- Login Section -->
+      <div id="CustomerLoginForm" class="space-y-6">
+        <div class="text-center space-y-1">
+          <span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold block">ATELIER PATRON LOGIN</span>
+          <h1 class="text-2xl font-light text-brand-espresso uppercase">Sign In</h1>
+          <p class="text-xs text-brand-mutedGray font-light">Access your bridal docket and reserved creations.</p>
+        </div>
+
+        {% form 'customer_login', class: 'space-y-4 text-xs' %}
+          {%- if form.errors -%}
+            <div class="p-3 bg-red-50 border border-red-200 text-red-900 rounded-sm">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="space-y-1">
+            <label for="CustomerEmail" class="block font-semibold uppercase tracking-wider text-brand-espresso">Email Address</label>
+            <input type="email" name="customer[email]" id="CustomerEmail" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="patron@domain.com">
+          </div>
+
+          <div class="space-y-1">
+            <div class="flex justify-between">
+              <label for="CustomerPassword" class="block font-semibold uppercase tracking-wider text-brand-espresso">Password</label>
+              <button type="button" onclick="document.getElementById('CustomerLoginForm').classList.add('hidden'); document.getElementById('RecoverPasswordForm').classList.remove('hidden');" class="text-[10px] uppercase tracking-wider text-brand-gold hover:text-brand-burgundy">
+                Forgot?
+              </button>
+            </div>
+            <input type="password" name="customer[password]" id="CustomerPassword" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="••••••••">
+          </div>
+
+          <button type="submit" class="w-full py-3.5 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors shadow-sm cursor-pointer">
+            ENTER ATELIER
+          </button>
+        {% endform %}
+
+        <div class="text-center pt-2 border-t border-[#EDE4D8] text-xs text-brand-mutedGray">
+          <span>New to Char Chaand? </span>
+          <a href="{{ routes.account_register_url }}" class="font-semibold text-brand-burgundy underline uppercase tracking-wider">
+            Create Patron Account
+          </a>
+        </div>
+      </div>
+
+      <!-- Password Recovery Section (Hidden by default) -->
+      <div id="RecoverPasswordForm" class="hidden space-y-6">
+        <div class="text-center space-y-1">
+          <span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold block">SECURITY PROTOCOL</span>
+          <h2 class="text-2xl font-light text-brand-espresso uppercase">Reset Password</h2>
+          <p class="text-xs text-brand-mutedGray font-light">We will send instructions to your registered email.</p>
+        </div>
+
+        {% form 'recover_customer_password', class: 'space-y-4 text-xs' %}
+          {%- if form.posted_successfully? -%}
+            <div class="p-3 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-sm">
+              Password recovery instructions have been dispatched to your email.
+            </div>
+          {%- endif -%}
+
+          <div class="space-y-1">
+            <label for="RecoverEmail" class="block font-semibold uppercase tracking-wider text-brand-espresso">Email Address</label>
+            <input type="email" name="email" id="RecoverEmail" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="patron@domain.com">
+          </div>
+
+          <button type="submit" class="w-full py-3.5 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors shadow-sm cursor-pointer">
+            SEND RESET LINK
+          </button>
+        {% endform %}
+
+        <div class="text-center pt-2">
+          <button type="button" onclick="document.getElementById('RecoverPasswordForm').classList.add('hidden'); document.getElementById('CustomerLoginForm').classList.remove('hidden');" class="text-xs uppercase tracking-widest font-semibold text-brand-gold hover:text-brand-burgundy">
+            ← Cancel &amp; Return to Sign In
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

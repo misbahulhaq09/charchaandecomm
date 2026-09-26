@@ -1,0 +1,88 @@
+{%- paginate search.results by 12 -%}
+  <div class="py-8 sm:py-14 bg-brand-cream" data-section-id="{{ section.id }}" data-section-type="search">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumbs -->
+      {% render 'breadcrumbs' %}
+
+      <!-- Search Header -->
+      <div class="text-center py-6 sm:py-10 max-w-2xl mx-auto space-y-4">
+        <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold">
+          ATELIER ARCHIVE LOOKUP
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-light text-brand-espresso uppercase">
+          Search Creations
+        </h1>
+
+        <!-- Search Form -->
+        <form action="{{ routes.search_url }}" method="get" role="search" class="relative mt-6 max-w-xl mx-auto">
+          <input
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="Search anarkalis, sherwanis, polki jewellery, lehengas..."
+            class="w-full px-5 py-3.5 pl-12 bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm text-xs text-brand-espresso placeholder:text-brand-mutedGray/60 focus:border-brand-burgundy focus:outline-none shadow-sm"
+          >
+          <input type="hidden" name="type" value="product">
+          <div class="absolute left-4 top-1/2 -translate-y-1/2 text-brand-gold pointer-events-none">
+            {% render 'icon', name: 'search', class: 'w-4 h-4' %}
+          </div>
+          <button type="submit" class="absolute right-2.5 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-brand-burgundy text-[#FAF7F2] text-[10px] uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors cursor-pointer">
+            SEARCH
+          </button>
+        </form>
+      </div>
+
+      <!-- Search Results Area -->
+      {%- if search.performed -%}
+        <div class="border-t border-[#EDE4D8] pt-8">
+          <div class="mb-8 flex items-center justify-between text-xs uppercase tracking-widest text-brand-mutedGray">
+            <span>
+              {%- if search.results_count == 0 -%}
+                No pieces found for "{{ search.terms }}"
+              {%- else -%}
+                {{ search.results_count }} Pieces Sanctioned for "{{ search.terms }}"
+              {%- endif -%}
+            </span>
+            <a href="{{ routes.all_products_collection_url }}" class="text-brand-gold hover:text-brand-burgundy transition-colors">
+              Explore All Collections →
+            </a>
+          </div>
+
+          {%- if search.results_count > 0 -%}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+              {%- for item in search.results -%}
+                {%- if item.object_type == 'product' -%}
+                  {% render 'product-card', product: item %}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+            {%- if paginate.pages > 1 -%}
+              {% render 'pagination', paginate: paginate %}
+            {%- endif -%}
+          {%- else -%}
+            <div class="text-center py-16 bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm space-y-4 max-w-xl mx-auto">
+              <span class="text-3xl">⚜</span>
+              <p class="text-xs uppercase tracking-widest text-brand-espresso font-semibold">No archival pieces matched your inquiry</p>
+              <p class="text-xs text-brand-mutedGray font-light max-w-sm mx-auto">
+                Please check the spelling or explore our signature wedding and bespoke festive collections.
+              </p>
+              <div class="pt-2">
+                <a href="{{ routes.all_products_collection_url }}" class="inline-block px-6 py-2.5 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors">
+                  View Full Archive
+                </a>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Main Search",
+  "settings": []
+}
+{% endschema %}

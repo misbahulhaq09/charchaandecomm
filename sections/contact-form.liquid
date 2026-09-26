@@ -1,0 +1,115 @@
+<div class="py-8 sm:py-14 bg-brand-cream" data-section-id="{{ section.id }}">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="py-6 sm:py-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <!-- LEFT: CONCIERGE INFORMATION (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div>
+          <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold block mb-1">
+            ATELIER PATRON SERVICES
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-light text-brand-espresso uppercase">
+            Private Concierge &amp; Appointments
+          </h1>
+          <p class="text-xs sm:text-sm text-brand-mutedGray font-light mt-3 leading-relaxed">
+            Our atelier liaisons and master stylists are at your disposal for bespoke bridal consultations, custom measurements, and private viewings.
+          </p>
+        </div>
+
+        <div class="space-y-4 pt-4 border-t border-[#EDE4D8] text-xs">
+          <div>
+            <h3 class="font-semibold text-brand-espresso uppercase tracking-wider">The Flagship Atelier</h3>
+            <p class="text-brand-mutedGray mt-1">Near Qutub Minar, Mehrauli Heritage Precinct<br>New Delhi &amp; Raipur, India</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-brand-espresso uppercase tracking-wider">Direct Liaison</h3>
+            <p class="text-brand-mutedGray mt-1">Telephone: +91 98765 43210<br>Private Desk: concierge@charchaand.com</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-brand-espresso uppercase tracking-wider">Consultation Hours</h3>
+            <p class="text-brand-mutedGray mt-1">Monday – Saturday: 11:00 AM – 8:00 PM IST<br>Sunday: By Prior Appointment Only</p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-brand-champagne/60 border border-[#EDE4D8] rounded-sm text-xs space-y-1">
+          <span class="font-semibold text-brand-burgundy uppercase tracking-wider">Virtual Global Appointments</span>
+          <p class="text-[11px] text-brand-mutedGray">
+            High-definition video consultations available worldwide with fabric swatches dispatched to your doorstep.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: INQUIRY FORM (7 cols) -->
+      <div class="lg:col-span-7 bg-[#FCFBF9] border border-[#EDE4D8] p-6 sm:p-10 rounded-sm shadow-sm space-y-6">
+        <h2 class="text-xl font-light text-brand-espresso uppercase border-b border-[#EDE4D8] pb-3">
+          Request Bespoke Consultation
+        </h2>
+
+        {% form 'contact', class: 'space-y-4 text-xs' %}
+          {%- if form.posted_successfully? -%}
+            <div class="p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-sm uppercase tracking-widest font-semibold text-center">
+              Your appointment request has been sanctioned. An atelier liaison will contact you within 24 hours.
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="p-4 bg-red-50 border border-red-200 text-red-900 rounded-sm">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <label class="block font-semibold uppercase tracking-wider text-brand-espresso" for="ContactFormName">Patron Name *</label>
+              <input type="text" id="ContactFormName" name="contact[name]" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="Maharani / Raja / Shri">
+            </div>
+            <div class="space-y-1">
+              <label class="block font-semibold uppercase tracking-wider text-brand-espresso" for="ContactFormEmail">Email Address *</label>
+              <input type="email" id="ContactFormEmail" name="contact[email]" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="patron@domain.com">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <label class="block font-semibold uppercase tracking-wider text-brand-espresso" for="ContactFormPhone">Contact Phone *</label>
+              <input type="tel" id="ContactFormPhone" name="contact[phone]" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="+91 00000 00000">
+            </div>
+            <div class="space-y-1">
+              <label class="block font-semibold uppercase tracking-wider text-brand-espresso" for="ContactFormService">Consultation Interest</label>
+              <select id="ContactFormService" name="contact[service]" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none uppercase tracking-wider cursor-pointer">
+                <option value="Bridal Lehenga">Bridal Lehenga &amp; Trousseau</option>
+                <option value="Groom Sherwani">Groom Velvet / Raw Silk Sherwani</option>
+                <option value="Polki High Jewellery">Polki &amp; Kundan Heritage Jewellery</option>
+                <option value="Virtual Styling Appointment">Virtual International Appointment</option>
+                <option value="Other Atelier Service">Other Bespoke Requirement</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <label class="block font-semibold uppercase tracking-wider text-brand-espresso" for="ContactFormDate">Expected Event Date (Optional)</label>
+            <input type="date" id="ContactFormDate" name="contact[event_date]" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none">
+          </div>
+
+          <div class="space-y-1">
+            <label class="block font-semibold uppercase tracking-wider text-brand-espresso" for="ContactFormMessage">Bespoke Requirements / Swatch Inquiries *</label>
+            <textarea id="ContactFormMessage" rows="4" name="contact[body]" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="Describe color palette preferences, silhouette inspirations, or tailoring questions..."></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors shadow-sm cursor-pointer">
+            SUBMIT APPOINTMENT REQUEST
+          </button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "settings": []
+}
+{% endschema %}

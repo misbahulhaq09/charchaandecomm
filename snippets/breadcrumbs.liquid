@@ -1,0 +1,34 @@
+{%- unless template == 'index' or template == 'cart' or template == '404' -%}
+  <nav aria-label="Breadcrumb" class="py-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center space-x-2 text-[10px] sm:text-xs uppercase tracking-widest text-[#706465]">
+    <a href="{{ routes.root_url }}" class="hover:text-[#4A0E17] transition-colors">Home</a>
+    <span class="text-[#C5A880]/60">/</span>
+
+    {%- if template contains 'page' -%}
+      <span class="text-[#1F1617] font-semibold">{{ page.title }}</span>
+    {%- elsif template contains 'product' -%}
+      {%- if collection.url -%}
+        <a href="{{ collection.url }}" class="hover:text-[#4A0E17] transition-colors">{{ collection.title }}</a>
+        <span class="text-[#C5A880]/60">/</span>
+      {%- else -%}
+        <a href="{{ routes.all_products_collection_url }}" class="hover:text-[#4A0E17] transition-colors">Collection</a>
+        <span class="text-[#C5A880]/60">/</span>
+      {%- endif -%}
+      <span class="text-[#1F1617] font-semibold truncate max-w-[200px] sm:max-w-none">{{ product.title }}</span>
+    {%- elsif template contains 'collection' and collection.handle -%}
+      <span class="text-[#1F1617] font-semibold">{{ collection.title }}</span>
+    {%- elsif template contains 'customers' -%}
+      <a href="{{ routes.account_url }}" class="hover:text-[#4A0E17] transition-colors">Account</a>
+      {%- if template contains 'order' -%}
+        <span class="text-[#C5A880]/60">/</span>
+        <span class="text-[#1F1617] font-semibold">Order {{ order.name }}</span>
+      {%- elsif template contains 'addresses' -%}
+        <span class="text-[#C5A880]/60">/</span>
+        <span class="text-[#1F1617] font-semibold">Addresses</span>
+      {%- endif -%}
+    {%- elsif template contains 'search' -%}
+      <span class="text-[#1F1617] font-semibold">Search Archive</span>
+    {%- else -%}
+      <span class="text-[#1F1617] font-semibold">{{ page_title }}</span>
+    {%- endif -%}
+  </nav>
+{%- endunless -%}

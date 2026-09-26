@@ -1,0 +1,90 @@
+<div class="py-8 sm:py-16 bg-brand-cream" data-section-id="{{ section.id }}">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <!-- Thank you badge & heading -->
+    <div class="text-center space-y-3">
+      <div class="w-16 h-16 bg-[#F5ECE1] border border-brand-gold/60 rounded-full flex items-center justify-center mx-auto text-brand-burgundy text-2xl shadow-sm">
+        ✓
+      </div>
+      <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold block">
+        ATELIER SANCTION ISSUED
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-light text-brand-espresso uppercase tracking-tight">
+        Consignment Confirmed
+      </h1>
+      <p class="text-xs sm:text-sm text-brand-mutedGray font-light max-w-lg mx-auto leading-relaxed">
+        Your bespoke commission has been formally recorded in the Char Chaand Imperial Register. A confirmation dossier has been sent to your email.
+      </p>
+    </div>
+
+    <!-- Order Reference Card -->
+    <div class="bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm p-6 sm:p-8 shadow-sm space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#EDE4D8] pb-6">
+        <div>
+          <span class="text-[10px] uppercase tracking-widest text-brand-gold font-semibold">DOSSIER IDENTIFIER</span>
+          <h2 class="text-xl font-semibold text-brand-espresso tracking-wider">#CC-2026-00001</h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <button
+            type="button"
+            onclick="navigator.clipboard.writeText('CC-2026-00001'); showToast('Dossier Ref Copied: CC-2026-00001');"
+            class="px-4 py-2 border border-[#EDE4D8] rounded text-xs uppercase tracking-wider font-semibold text-brand-espresso hover:border-brand-burgundy"
+          >
+            Copy Reference
+          </button>
+          <a href="/pages/order-tracking" class="px-5 py-2 bg-brand-burgundy text-[#FAF7F2] rounded text-xs uppercase tracking-widest font-semibold hover:bg-brand-deepWine">
+            Track Docket
+          </a>
+        </div>
+      </div>
+
+      <!-- Commission Milestones Summary -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
+        <div class="space-y-1">
+          <span class="text-brand-mutedGray uppercase tracking-wider text-[10px]">Estimated Delivery</span>
+          <p class="font-semibold text-brand-espresso text-sm">October 12 – 18, 2026</p>
+          <p class="text-[10px] text-brand-gold">Handcrafted on Order</p>
+        </div>
+        <div class="space-y-1">
+          <span class="text-brand-mutedGray uppercase tracking-wider text-[10px]">Transit Method</span>
+          <p class="font-semibold text-brand-espresso text-sm">Diplomatic White Glove</p>
+          <p class="text-[10px] text-brand-gold">Signature Reception Required</p>
+        </div>
+        <div class="space-y-1">
+          <span class="text-brand-mutedGray uppercase tracking-wider text-[10px]">Private Atelier Desk</span>
+          <p class="font-semibold text-brand-espresso text-sm">+91 98765 43210</p>
+          <p class="text-[10px] text-brand-gold">concierge@charchaand.com</p>
+        </div>
+      </div>
+
+      <!-- Atelier Protocol Next Steps -->
+      <div class="border-t border-[#EDE4D8] pt-6 space-y-3">
+        <h3 class="text-xs uppercase tracking-widest font-semibold text-brand-burgundy">Next Steps for Your Commission</h3>
+        <ul class="space-y-2 text-xs text-brand-mutedGray font-light list-disc pl-4 leading-relaxed">
+          <li>A master stylist will contact you via WhatsApp to verify bespoke drape and blouse measurements.</li>
+          <li>High-definition fabric swatches will be dispatched for physical color verification if requested.</li>
+          <li>You may inspect the karigar progression at any time using your dossier reference on our tracking page.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+      <a href="{{ routes.all_products_collection_url }}" class="w-full sm:w-auto px-8 py-3.5 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-all text-center">
+        EXPLORE MORE CREATIONS
+      </a>
+      <a href="{{ routes.root_url }}" class="w-full sm:w-auto px-8 py-3.5 border border-[#EDE4D8] text-brand-espresso text-xs uppercase tracking-widest font-semibold rounded-sm hover:border-brand-burgundy transition-all text-center">
+        RETURN TO HOMEPAGE
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Order Confirmation",
+  "settings": []
+}
+{% endschema %}

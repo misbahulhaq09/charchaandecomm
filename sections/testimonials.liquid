@@ -1,0 +1,147 @@
+<section class="py-16 sm:py-20 bg-brand-cardIvory border-y border-[#EDE4D8]" data-purpose="testimonials">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold">
+        {{ section.settings.subheading | default: 'PATRON EXPERIENCES' }}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-light text-brand-espresso mt-1 uppercase">
+        {{ section.settings.heading | default: 'What Our Clients Say' }}
+      </h2>
+      <div class="w-10 h-px bg-brand-gold mx-auto my-3"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="bg-brand-cream border border-brand-gold/30 p-8 rounded-sm flex flex-col justify-between" {{ block.shopify_attributes }}>
+            <div>
+              <div class="flex text-brand-deepGold space-x-1 mb-4 text-xs">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="text-base text-brand-espresso italic font-light leading-snug">
+                "{{ block.settings.quote }}"
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-brand-gold/20 flex items-center justify-between">
+              <div>
+                <p class="text-xs uppercase tracking-widest font-semibold text-brand-burgundy">{{ block.settings.author }}</p>
+                <p class="text-[10px] text-brand-mutedGray uppercase tracking-widest font-light">{{ block.settings.location }}</p>
+              </div>
+              <span class="text-[10px] uppercase tracking-widest text-brand-gold">{{ block.settings.badge | default: 'Verified Client' }}</span>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Review 1 -->
+        <div class="bg-brand-cream border border-brand-gold/30 p-8 rounded-sm flex flex-col justify-between">
+          <div>
+            <div class="flex text-brand-deepGold space-x-1 mb-4 text-xs">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-base text-brand-espresso italic font-light leading-snug">
+              "The craftsmanship on my bridal lehenga surpassed every expectation. The weight, the movement, the finish—a true heirloom piece."
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-brand-gold/20 flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-widest font-semibold text-brand-burgundy">Gayatri M.</p>
+              <p class="text-[10px] text-brand-mutedGray uppercase tracking-widest font-light">New Delhi</p>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-brand-gold">Verified Client</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-brand-cream border border-brand-gold/30 p-8 rounded-sm flex flex-col justify-between">
+          <div>
+            <div class="flex text-brand-deepGold space-x-1 mb-4 text-xs">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-base text-brand-espresso italic font-light leading-snug">
+              "Impeccable fitting and deeply thoughtful atelier consultations. Char Chaand delivered effortless luxury from first swatch to final drape."
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-brand-gold/20 flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-widest font-semibold text-brand-burgundy">Sunaina R.</p>
+              <p class="text-[10px] text-brand-mutedGray uppercase tracking-widest font-light">Mumbai</p>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-brand-gold">Bespoke Couture</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-brand-cream border border-brand-gold/30 p-8 rounded-sm flex flex-col justify-between">
+          <div>
+            <div class="flex text-brand-deepGold space-x-1 mb-4 text-xs">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-base text-brand-espresso italic font-light leading-snug">
+              "The Zardozi work is breathtaking in person. The subtlety and balance of shades sets a new benchmark in contemporary Indian couture."
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-brand-gold/20 flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-widest font-semibold text-brand-burgundy">Ananya K.</p>
+              <p class="text-[10px] text-brand-mutedGray uppercase tracking-widest font-light">Dubai</p>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-brand-gold">Verified Client</span>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "PATRON EXPERIENCES"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Clients Say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name"
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "Verified Client"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

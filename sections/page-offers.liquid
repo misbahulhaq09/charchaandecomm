@@ -1,0 +1,169 @@
+<div class="py-8 sm:py-14 bg-brand-cream" data-section-id="{{ section.id }}">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="py-6 sm:py-8 space-y-10">
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold">
+          IMPERIAL VAULT PRIVILEGES • SANCTIONED COMMISSIONS
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-light text-brand-espresso uppercase tracking-tight">
+          Exclusive Offers &amp; Atelier Privileges
+        </h1>
+        <p class="text-xs sm:text-sm text-brand-mutedGray font-light leading-relaxed">
+          Discover bespoke patron concessions, wedding trousseau sanctions, and archival incentives extended by the Char Chaand Mehrauli Atelier.
+        </p>
+      </div>
+
+      <!-- Authentication Ledger / Code Validator Card -->
+      <div class="bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm p-6 sm:p-8 max-w-3xl mx-auto shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#EDE4D8] pb-4">
+          <div>
+            <span class="text-[10px] uppercase tracking-widest text-brand-gold font-semibold">AUTHENTICATION LEDGER</span>
+            <h2 class="text-lg font-semibold text-brand-espresso uppercase">Validate Atelier Privilege Code</h2>
+          </div>
+          <span class="text-[11px] text-brand-mutedGray uppercase tracking-wider">Sanction Registry 2026</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input
+            type="text"
+            id="privilege-input"
+            placeholder="ENTER PRIVILEGE CODE (e.g. ROYALWELCOME)"
+            class="flex-1 px-4 py-3 bg-[#FAF7F2] border border-[#EDE4D8] rounded-sm text-xs font-semibold uppercase tracking-widest text-brand-espresso focus:border-brand-burgundy focus:outline-none"
+          >
+          <button
+            type="button"
+            onclick="validatePrivilegeCode()"
+            class="px-8 py-3 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors cursor-pointer"
+          >
+            VALIDATE &amp; APPLY
+          </button>
+        </div>
+
+        <div id="privilege-result" class="hidden p-4 rounded-sm border text-xs">
+          <!-- Result message injected via JS -->
+        </div>
+      </div>
+
+      <!-- Active Privilege Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-4">
+        <!-- Offer 1 -->
+        <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 rounded-sm flex flex-col justify-between space-y-6 hover:border-brand-gold transition-colors">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="bg-brand-burgundy text-[#FAF7F2] text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-semibold">ACTIVE SANCTION</span>
+              <span class="text-[10px] uppercase text-brand-gold font-semibold">BRIDAL VAULT</span>
+            </div>
+            <h3 class="text-xl font-light text-brand-espresso uppercase">10% Welcome Atelier Concession</h3>
+            <p class="text-xs text-brand-mutedGray font-light leading-relaxed">
+              Extended to first-time couture patrons across all bespoke bridal lehengas, sarees, and heritage polki jewellery.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[#EDE4D8] flex items-center justify-between">
+            <span class="font-mono text-xs tracking-widest font-bold text-brand-burgundy bg-[#F5ECE1] px-3 py-1.5 rounded border border-brand-gold/30">
+              ROYALWELCOME
+            </span>
+            <button
+              type="button"
+              onclick="copyCode('ROYALWELCOME')"
+              class="text-[10px] uppercase tracking-widest font-semibold text-brand-gold hover:text-brand-burgundy"
+            >
+              Copy Code
+            </button>
+          </div>
+        </div>
+
+        <!-- Offer 2 -->
+        <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 rounded-sm flex flex-col justify-between space-y-6 hover:border-brand-gold transition-colors">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="bg-brand-burgundy text-[#FAF7F2] text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-semibold">SEASONAL SANCTION</span>
+              <span class="text-[10px] uppercase text-brand-gold font-semibold">TROUSSEAU TIER</span>
+            </div>
+            <h3 class="text-xl font-light text-brand-espresso uppercase">₹15,000 Courtesy Courtesy Benefit</h3>
+            <p class="text-xs text-brand-mutedGray font-light leading-relaxed">
+              Complimentary concession applicable on combined bridal orders exceeding ₹1,50,000 for upcoming wedding celebrations.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[#EDE4D8] flex items-center justify-between">
+            <span class="font-mono text-xs tracking-widest font-bold text-brand-burgundy bg-[#F5ECE1] px-3 py-1.5 rounded border border-brand-gold/30">
+              TROUSSEAU2026
+            </span>
+            <button
+              type="button"
+              onclick="copyCode('TROUSSEAU2026')"
+              class="text-[10px] uppercase tracking-widest font-semibold text-brand-gold hover:text-brand-burgundy"
+            >
+              Copy Code
+            </button>
+          </div>
+        </div>
+
+        <!-- Offer 3 -->
+        <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 rounded-sm flex flex-col justify-between space-y-6 hover:border-brand-gold transition-colors">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="bg-brand-burgundy text-[#FAF7F2] text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-semibold">HERITAGE ACCORD</span>
+              <span class="text-[10px] uppercase text-brand-gold font-semibold">MENSWEAR</span>
+            </div>
+            <h3 class="text-xl font-light text-brand-espresso uppercase">Complimentary Silk Stole</h3>
+            <p class="text-xs text-brand-mutedGray font-light leading-relaxed">
+              A handcrafted pure zari tissue silk stole included with every bespoke royal velvet or raw silk groom sherwani commission.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[#EDE4D8] flex items-center justify-between">
+            <span class="font-mono text-xs tracking-widest font-bold text-brand-burgundy bg-[#F5ECE1] px-3 py-1.5 rounded border border-brand-gold/30">
+              ROYALARCHIVE
+            </span>
+            <button
+              type="button"
+              onclick="copyCode('ROYALARCHIVE')"
+              class="text-[10px] uppercase tracking-widest font-semibold text-brand-gold hover:text-brand-burgundy"
+            >
+              Copy Code
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function copyCode(code) {
+    navigator.clipboard.writeText(code);
+    showToast(`Privilege Code Copied: ${code}`);
+  }
+
+  function validatePrivilegeCode() {
+    const code = document.getElementById('privilege-input').value.trim().toUpperCase();
+    const result = document.getElementById('privilege-result');
+    if (!code) return;
+
+    result.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-900', 'bg-red-50', 'border-red-200', 'text-red-900');
+
+    if (code === 'ROYALWELCOME') {
+      result.className = 'p-4 rounded-sm border bg-emerald-50 border-emerald-200 text-emerald-900 text-xs flex justify-between items-center';
+      result.innerHTML = '<span><strong>PRIVILEGE SANCTIONED:</strong> 10% Complimentary Atelier Concession activated.</span><a href="/checkout?discount=' + code + '" class="font-bold underline uppercase">Apply at Checkout →</a>';
+    } else if (code === 'TROUSSEAU2026') {
+      result.className = 'p-4 rounded-sm border bg-emerald-50 border-emerald-200 text-emerald-900 text-xs flex justify-between items-center';
+      result.innerHTML = '<span><strong>PRIVILEGE SANCTIONED:</strong> ₹15,000 Courtesy Benefit applied on orders exceeding ₹1,50,000.</span><a href="/checkout?discount=' + code + '" class="font-bold underline uppercase">Apply at Checkout →</a>';
+    } else if (code === 'ROYALARCHIVE') {
+      result.className = 'p-4 rounded-sm border bg-emerald-50 border-emerald-200 text-emerald-900 text-xs flex justify-between items-center';
+      result.innerHTML = '<span><strong>PRIVILEGE SANCTIONED:</strong> Complimentary Pure Silk Stole registered with your groom commission.</span><a href="/checkout?discount=' + code + '" class="font-bold underline uppercase">Apply at Checkout →</a>';
+    } else {
+      result.className = 'p-4 rounded-sm border bg-red-50 border-red-200 text-red-900 text-xs';
+      result.innerHTML = '<span>Privilege code <strong>' + code + '</strong> is unrecognized or expired. Please contact your private concierge.</span>';
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Offers & Privileges",
+  "settings": []
+}
+{% endschema %}

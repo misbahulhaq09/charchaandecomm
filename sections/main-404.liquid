@@ -1,0 +1,21 @@
+<div class="py-20 sm:py-28 bg-brand-cream text-center">
+  <div class="max-w-xl mx-auto px-4 sm:px-6 space-y-4">
+    <span class="text-xs uppercase tracking-ultra text-brand-gold font-semibold">404 ERROR</span>
+    <h1 class="text-4xl sm:text-5xl font-light text-brand-espresso uppercase tracking-tight">Archive Not Found</h1>
+    <p class="text-xs sm:text-sm text-brand-mutedGray font-light max-w-md mx-auto leading-relaxed">
+      The couture piece or archival page you are seeking has either been transitioned to a private exhibition or does not exist.
+    </p>
+    <div class="pt-6">
+      <a href="{{ routes.root_url }}" class="inline-block px-8 py-3.5 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-all shadow-sm">
+        RETURN TO HOMEPAGE
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "404 Page",
+  "settings": []
+}
+{% endschema %}

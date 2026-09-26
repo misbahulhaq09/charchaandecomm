@@ -1,0 +1,109 @@
+<div class="py-8 sm:py-14 bg-brand-cream">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#EDE4D8] pb-6 gap-4">
+      <div>
+        <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold block mb-1">
+          ATELIER REGISTRY
+        </span>
+        <h1 class="text-3xl font-light text-brand-espresso uppercase">
+          Delivery Addresses
+        </h1>
+      </div>
+      <a href="{{ routes.account_url }}" class="text-xs uppercase tracking-widest text-brand-gold hover:text-brand-burgundy transition-colors font-semibold">
+        ← Return to Account
+      </a>
+    </div>
+
+    <!-- Address List -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+      {%- for address in customer.addresses -%}
+        <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 rounded-sm shadow-sm space-y-3">
+          {%- if address == customer.default_address -%}
+            <span class="inline-block px-2.5 py-0.5 bg-brand-burgundy text-[#FAF7F2] text-[9px] uppercase tracking-wider font-semibold rounded-sm">
+              Default Address
+            </span>
+          {%- endif -%}
+          <div class="text-brand-mutedGray leading-relaxed">
+            <p class="font-semibold text-brand-espresso">{{ address.name }}</p>
+            <p>{{ address.address1 }}</p>
+            {%- if address.address2 != blank -%}<p>{{ address.address2 }}</p>{%- endif -%}
+            <p>{{ address.city }}, {{ address.province_code }} {{ address.zip }}</p>
+            <p>{{ address.country }}</p>
+            {%- if address.phone != blank -%}<p class="pt-1">Tel: {{ address.phone }}</p>{%- endif -%}
+          </div>
+          <div class="pt-2 border-t border-[#EDE4D8] flex items-center justify-between">
+            <form method="post" action="/account/addresses/{{ address.id }}" onsubmit="return confirm('Remove this address?');">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="text-[10px] uppercase text-[#BA1A1A] hover:underline cursor-pointer">
+                Delete Address
+              </button>
+            </form>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <!-- Add New Address Form -->
+    <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 sm:p-8 rounded-sm shadow-sm space-y-6">
+      <h2 class="text-lg font-semibold text-brand-espresso uppercase border-b border-[#EDE4D8] pb-3">
+        Add New Address
+      </h2>
+      {% form 'customer_address', customer.new_address, class: 'space-y-4 text-xs' %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block font-semibold uppercase tracking-wider text-brand-espresso">First Name</label>
+            <input type="text" name="address[first_name]" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="block font-semibold uppercase tracking-wider text-brand-espresso">Last Name</label>
+            <input type="text" name="address[last_name]" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none">
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-semibold uppercase tracking-wider text-brand-espresso">Address 1</label>
+          <input type="text" name="address[address1]" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none">
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-semibold uppercase tracking-wider text-brand-espresso">Address 2 (Suite, Floor)</label>
+          <input type="text" name="address[address2]" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="space-y-1">
+            <label class="block font-semibold uppercase tracking-wider text-brand-espresso">City</label>
+            <input type="text" name="address[city]" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="block font-semibold uppercase tracking-wider text-brand-espresso">Country</label>
+            <select name="address[country]" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none uppercase">
+              {{ all_country_option_tags }}
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label class="block font-semibold uppercase tracking-wider text-brand-espresso">Postal / ZIP Code</label>
+            <input type="text" name="address[zip]" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none">
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-semibold uppercase tracking-wider text-brand-espresso">Phone</label>
+          <input type="tel" name="address[phone]" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none">
+        </div>
+
+        <div class="flex items-center gap-2 pt-2">
+          {{ form.set_as_default_checkbox }}
+          <label for="address_default_address_new" class="text-xs uppercase tracking-wider text-brand-espresso">Set as default delivery address</label>
+        </div>
+
+        <button type="submit" class="px-8 py-3 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors shadow-sm cursor-pointer">
+          SAVE ADDRESS
+        </button>
+      {% endform %}
+    </div>
+  </div>
+</div>

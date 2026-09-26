@@ -1,0 +1,14 @@
+{
+  "current": {
+    "color_bg": "#FAF7F2",
+    "color_surface": "#FCFBF9",
+    "color_primary": "#4A0E17",
+    "color_secondary": "#C5A880",
+    "color_text": "#1F1617",
+    "color_text_muted": "#706465",
+    "social_instagram": "https://instagram.com/charchaand",
+    "social_pinterest": "https://pinterest.com/charchaand",
+    "social_youtube": "https://youtube.com/charchaand",
+    "cart_drawer_enabled": true
+  }
+}

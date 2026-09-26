@@ -1,0 +1,135 @@
+<section class="py-12 sm:py-14 bg-brand-cream border-b border-[#EDE4D8]" data-purpose="circular-category-navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 sm:gap-8 justify-items-center">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- assign col_obj = block.settings.collection -%}
+          {%- assign col_url = block.settings.url | default: col_obj.url | default: routes.all_products_collection_url -%}
+          {%- assign col_title = block.settings.title | default: col_obj.title | default: 'Category' -%}
+          {%- assign col_img = block.settings.image | default: col_obj.featured_image -%}
+
+          <a class="group flex flex-col items-center text-center space-y-3" href="{{ col_url }}" {{ block.shopify_attributes }}>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+              <div class="w-full h-full rounded-full overflow-hidden relative">
+                {%- if col_img != blank -%}
+                  <img src="{{ col_img | image_url: width: 250 }}" alt="{{ col_title | escape }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                {%- else -%}
+                  <div class="w-full h-full flex items-center justify-center bg-[#EDE4D8] text-[9px] uppercase font-semibold text-[#706465]">
+                    {{ col_title }}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+            <span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">
+              {{ col_title }}
+            </span>
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback Pre-configured Default Categories -->
+        <a class="group flex flex-col items-center text-center space-y-3" href="{{ routes.all_products_collection_url }}">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+            <div class="w-full h-full rounded-full overflow-hidden relative">
+              <img alt="Indo Western" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABe1FtAyPtyIPLFjiMxXn4bYIaBnOIKiXWmEHSLfiRapTd8gqozoHumkQXWJiDQk86Onlrd3QhuYaYZ7SRqrrvwp9BqfpRIEHAM8oh92-DacTr4uDb7jlP3_F4JhG0QSMhI6bUTiP4l-MysXNpxcDzPZZV_7rtyUsaKzvZYzriC7Y_CxOYJWd3x0mYvwwq5_y3g20T_DKeDfYsR7003Gy49sAjWZPko2omyjD8anhQAQf51KwcGdyc">
+            </div>
+          </div>
+          <span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Indo Western</span>
+        </a>
+
+        <a class="group flex flex-col items-center text-center space-y-3" href="{{ routes.all_products_collection_url }}">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+            <div class="w-full h-full rounded-full overflow-hidden relative">
+              <img alt="Traditional Suits" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCe7tGgR-6t2Meu-MWBj_cep-Mw8MlhWTDo1F0wv5kE_jgtaavV83Rm9HiAXyhlTa0f8GqLUXbszpxTPj7o-rTYLZ0jZbIqMv82l9f_oLm33XDXVfw6eHTTQ-H1u5EF1A6Wd4Abs2mWrup5p9Cnopi1H1xxitTWCtYZsFpWYpwc4CraPjczeZE577O7LfpbOZkHcy0K1UlIMR3xbE2snF-H0nP4SUpFBGaMgGrthOjyJN4WkxGMW95">
+            </div>
+          </div>
+          <span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Traditional Suits</span>
+        </a>
+
+        <a class="group flex flex-col items-center text-center space-y-3" href="{{ routes.all_products_collection_url }}">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+            <div class="w-full h-full rounded-full overflow-hidden relative">
+              <img alt="Men's Formal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIqgW93JALU-wyqQgs95qtzpDq-SCoX9h9mKwUVlSARwpgI6j35X35MTayCC8-KBQOkEozu7dbJGKnPpIB6yGPnIE9MgtzPLYG-dqi0HpatCQWMOrP1kBLHADR3rEP3gSnMzyMnvdUvIjqW6-x_PcA6nrpVl_9s8yNO11SySXHjfFLu3VoFYrCHIsIcvF-xn-LJEKppRScMbV65siXdPcsG7wVdpLHfSUVE8D1k2Csur393H8PXeWP">
+            </div>
+          </div>
+          <span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Men's Formal</span>
+        </a>
+
+        <a class="group flex flex-col items-center text-center space-y-3" href="{{ routes.all_products_collection_url }}">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+            <div class="w-full h-full rounded-full overflow-hidden relative">
+              <img alt="Women's Formal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzbIwzc6XPEjD_TseettDgXcD-IRaTf2ebjsqgw9aE-UBd5-b2xSMhufbWuAzTDSzluGgP_4LVq-RIYwKBSJkhpjFjMFYCh0Sh_dHYbjWlTCK9z_DDxxqZhfsJbUYn-0gfTASA6f2ESQ0ZjPos7RAD-_EV2wlrwGW-uVW6Qg4AqVyqyAgGc8ffquriX0h90FHFVrwWUPEZyoiNxbUnfod_tBhhxgkiR85DuArPh_s11g7f2yhhut53">
+            </div>
+          </div>
+          <span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Women's Formal</span>
+        </a>
+
+        <a class="group flex flex-col items-center text-center space-y-3" href="{{ routes.all_products_collection_url }}">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+            <div class="w-full h-full rounded-full overflow-hidden relative">
+              <img alt="Perfumes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXaXHZ61Ocln631CPrWfqLAzOACJPhrPv9K2t2FS2CIR99qkTrpScxJDjvBV_H1Nawzi41G3QjCX436sG0-8u9xjI1o5E6tj7XqVAdGhBBzQMYEtHr9DyeBSzeVlHdAvFo71AolCoIrRtVCcmhy-v-BXqjR9_Vk_xuFAe6C9pSll3SaqUl9bHKg5rDzAUQbQgHYYmMrvtdXq-HAVk9oUoXGd01A4J6di43-VXzqCcufBIhlbMx4iox">
+            </div>
+          </div>
+          <span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Perfumes</span>
+        </a>
+
+        <a class="group flex flex-col items-center text-center space-y-3" href="{{ routes.all_products_collection_url }}">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+            <div class="w-full h-full rounded-full overflow-hidden relative">
+              <img alt="Jewellery" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACHGFAFyMgYR9FiQyiGVAWXUySEAWc2gACIMoBXLoVTe6rb_6hlX-qXx20EzXPOg4hBqgLI_UCB7jxfklqkURUGcIBxh8jNkGSueDu6S3qZyMeIr-3qjDC-_fwhueBmwghMbl86QnOyY7_p_DwMWSWnIOP15OGK4_WlsuC4By76_l28Ca6Wy_lXhcyUOAp3Di-vTzPxayScvAXe0My9SJKYmOKhzM8xVEr8Z2AXeL7s_UE2f3ZL5YB">
+            </div>
+          </div>
+          <span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Jewellery</span>
+        </a>
+
+        <a class="group flex flex-col items-center text-center space-y-3 col-span-3 sm:col-span-2 md:col-span-1" href="{{ routes.all_products_collection_url }}">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-brand-gold/50 p-1 group-hover:border-brand-burgundy transition-colors bg-[#F5ECE1] circle-glow">
+            <div class="w-full h-full rounded-full overflow-hidden relative">
+              <img alt="Bags" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW6r_wvSv1C-RwQqH6k1JAAybcbBeu3l0fvwlUx_tuJFn7po_D66OgOObw6rEJbJsPgxA9WVqbFtT-c4OeGpmvCQafxGGDWu-kj-pz53wFIFQYzM4BvO-NE-qf0jGPcy0_Lfps5pSEyFq1u6iyNu2FG1wJdXzycIqM4rtTO1vmRmRBv9IdNyHAcybSmi3wzSPApymHp9Q8__d40-VbxRBSi6dHKnCll7_n_Oom5dls1Ldip9H1uW05">
+            </div>
+          </div>
+          <span class="text-[11px] font-medium uppercase tracking-widest text-brand-espresso group-hover:text-brand-burgundy transition-colors">Bags</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Circular Categories",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Custom URL (Optional)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Thumbnail Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Circular Categories"
+    }
+  ]
+}
+{% endschema %}

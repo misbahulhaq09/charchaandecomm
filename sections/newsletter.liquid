@@ -1,0 +1,67 @@
+<section class="py-16 bg-brand-champagne border-t border-[#E8DFD3]" data-purpose="newsletter-subscription">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold block mb-2">
+      {{ section.settings.subheading | default: 'PRIVILEGED ACCESS' }}
+    </span>
+    <h2 class="text-3xl sm:text-4xl text-brand-espresso font-normal uppercase">
+      {{ section.settings.heading | default: 'Stay In The World of CHAR CHAAND' }}
+    </h2>
+    <p class="text-xs sm:text-sm text-brand-mutedGray font-light mt-2 max-w-lg mx-auto">
+      {{ section.settings.description | default: 'Subscribe for private atelier previews, bespoke trunk shows, and seasonal reveals.' }}
+    </p>
+
+    {% form 'customer', class: 'mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- if form.posted_successfully? -%}
+        <div class="p-3 bg-brand-cream border border-brand-gold text-brand-burgundy text-xs uppercase tracking-widest font-semibold rounded-sm">
+          Thank you for joining our private patron registry.
+        </div>
+      {%- else -%}
+        <label class="sr-only" for="NewsletterEmail-{{ section.id }}">Email Address</label>
+        <input
+          id="NewsletterEmail-{{ section.id }}"
+          type="email"
+          name="contact[email]"
+          value="{{ form.email }}"
+          placeholder="Enter your email address"
+          required
+          class="w-full sm:flex-1 px-4 py-3 bg-brand-cream border border-brand-gold/40 text-brand-espresso text-xs placeholder:text-brand-mutedGray/60 focus:outline-none focus:border-brand-burgundy rounded-sm"
+        >
+        <button class="w-full sm:w-auto px-8 py-3 bg-brand-burgundy text-brand-cream border border-brand-gold/40 text-xs tracking-widest uppercase font-semibold rounded-sm hover:bg-brand-deepWine transition-all cursor-pointer" type="submit">
+          SUBSCRIBE
+        </button>
+      {%- endif -%}
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "PRIVILEGED ACCESS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stay In The World of CHAR CHAAND"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Subscribe for private atelier previews, bespoke trunk shows, and seasonal reveals."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,141 @@
+<div class="py-8 sm:py-14 bg-brand-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="py-6 sm:py-8 space-y-8">
+      <!-- Top Dossier Header Card -->
+      <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 sm:p-8 rounded-sm shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#EDE4D8] pb-6">
+          <div class="space-y-1">
+            <span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold">
+              ATELIER PATRON ARCHIVE • CONSIGNMENT DOSSIER
+            </span>
+            <h1 class="text-2xl sm:text-3xl font-light text-brand-espresso uppercase">
+              Order {{ order.name }}
+            </h1>
+            <p class="text-xs text-brand-mutedGray">
+              Sanctioned on {{ order.created_at | date: "%B %d, %Y at %I:%M %p" }}
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 bg-brand-burgundy text-[#FAF7F2] text-[10px] uppercase tracking-widest font-semibold rounded-sm">
+              {{ order.financial_status_label }}
+            </span>
+            <span class="px-3 py-1 bg-[#F5ECE1] text-brand-burgundy text-[10px] uppercase tracking-widest font-semibold rounded-sm border border-brand-gold/30">
+              {{ order.fulfillment_status_label }}
+            </span>
+          </div>
+        </div>
+
+        {%- if order.cancelled -%}
+          <div class="mt-4 p-4 bg-red-50 border border-red-200 text-red-900 text-xs rounded-sm">
+            <strong>Order Cancelled:</strong> {{ order.cancelled_at | date: "%B %d, %Y" }} &ndash; {{ order.cancel_reason }}
+          </div>
+        {%- endif -%}
+
+        <!-- Main Items Table -->
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-[#F5ECE1] border-b border-[#EDE4D8] uppercase tracking-wider text-[10px] text-brand-espresso">
+              <tr>
+                <th class="p-4">Couture Piece</th>
+                <th class="p-4">SKU / Docket</th>
+                <th class="p-4">Price</th>
+                <th class="p-4 text-center">Qty</th>
+                <th class="p-4 text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#EDE4D8]">
+              {%- for line_item in order.line_items -%}
+                <tr>
+                  <td class="p-4 flex items-center gap-4">
+                    {%- if line_item.image -%}
+                      <img src="{{ line_item.image | image_url: width: 150 }}" alt="{{ line_item.title | escape }}" class="w-14 h-18 object-cover rounded-sm border border-[#EDE4D8]">
+                    {%- endif -%}
+                    <div>
+                      <p class="font-semibold text-brand-espresso uppercase">{{ line_item.product.title }}</p>
+                      {%- unless line_item.product.has_only_default_variant -%}
+                        <p class="text-[10px] text-brand-gold uppercase tracking-wider">{{ line_item.variant.title }}</p>
+                      {%- endunless -%}
+                    </div>
+                  </td>
+                  <td class="p-4 text-brand-mutedGray font-mono text-[11px]">
+                    {{ line_item.sku | default: 'CC-ATELIER' }}
+                  </td>
+                  <td class="p-4 text-brand-espresso">
+                    {{ line_item.original_price | money }}
+                  </td>
+                  <td class="p-4 text-center font-medium">
+                    {{ line_item.quantity }}
+                  </td>
+                  <td class="p-4 text-right font-semibold text-brand-burgundy">
+                    {{ line_item.final_line_price | money }}
+                  </td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+            <tfoot class="border-t border-[#EDE4D8] text-xs divide-y divide-[#EDE4D8]">
+              <tr>
+                <td colspan="4" class="p-3 text-right uppercase tracking-wider text-brand-mutedGray">Subtotal</td>
+                <td class="p-3 text-right font-semibold text-brand-espresso">{{ order.line_items_subtotal_price | money }}</td>
+              </tr>
+              {%- for shipping_method in order.shipping_methods -%}
+                <tr>
+                  <td colspan="4" class="p-3 text-right uppercase tracking-wider text-brand-mutedGray">White Glove Delivery ({{ shipping_method.title }})</td>
+                  <td class="p-3 text-right font-semibold text-brand-espresso">{{ shipping_method.price | money }}</td>
+                </tr>
+              {%- endfor -%}
+              {%- for tax_line in order.tax_lines -%}
+                <tr>
+                  <td colspan="4" class="p-3 text-right uppercase tracking-wider text-brand-mutedGray">Tax ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
+                  <td class="p-3 text-right font-semibold text-brand-espresso">{{ tax_line.price | money }}</td>
+                </tr>
+              {%- endfor -%}
+              <tr class="bg-[#F5ECE1]">
+                <td colspan="4" class="p-4 text-right uppercase tracking-widest font-semibold text-brand-burgundy text-sm">Total Sanctioned</td>
+                <td class="p-4 text-right font-bold text-brand-burgundy text-sm">{{ order.total_price | money }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- Address Breakdown -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+        <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 rounded-sm space-y-2">
+          <h3 class="font-semibold text-brand-burgundy uppercase tracking-wider border-b border-[#EDE4D8] pb-2">
+            Billing Address
+          </h3>
+          <p class="font-medium text-brand-espresso">{{ order.billing_address.name }}</p>
+          <p class="text-brand-mutedGray leading-relaxed">
+            {{ order.billing_address.address1 }}<br>
+            {%- if order.billing_address.address2 != blank -%}{{ order.billing_address.address2 }}<br>{%- endif -%}
+            {{ order.billing_address.city }}, {{ order.billing_address.province }} {{ order.billing_address.zip }}<br>
+            {{ order.billing_address.country }}
+          </p>
+        </div>
+
+        <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 rounded-sm space-y-2">
+          <h3 class="font-semibold text-brand-burgundy uppercase tracking-wider border-b border-[#EDE4D8] pb-2">
+            White Glove Delivery Address
+          </h3>
+          <p class="font-medium text-brand-espresso">{{ order.shipping_address.name }}</p>
+          <p class="text-brand-mutedGray leading-relaxed">
+            {{ order.shipping_address.address1 }}<br>
+            {%- if order.shipping_address.address2 != blank -%}{{ order.shipping_address.address2 }}<br>{%- endif -%}
+            {{ order.shipping_address.city }}, {{ order.shipping_address.province }} {{ order.shipping_address.zip }}<br>
+            {{ order.shipping_address.country }}
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center pt-4">
+        <a href="{{ routes.account_url }}" class="inline-block px-8 py-3 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors">
+          ← Return to My Account
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

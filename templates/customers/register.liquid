@@ -1,0 +1,54 @@
+<div class="py-12 sm:py-20 bg-brand-cream">
+  <div class="max-w-md mx-auto px-4 sm:px-6">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-8 sm:p-10 rounded-sm shadow-sm space-y-6 mt-6">
+      <div class="text-center space-y-1">
+        <span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold block">ATELIER REGISTRATION</span>
+        <h1 class="text-2xl font-light text-brand-espresso uppercase">Create Patron Account</h1>
+        <p class="text-xs text-brand-mutedGray font-light">Join the private circle of Char Chaand patrons.</p>
+      </div>
+
+      {% form 'create_customer', class: 'space-y-4 text-xs' %}
+        {%- if form.errors -%}
+          <div class="p-3 bg-red-50 border border-red-200 text-red-900 rounded-sm">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="space-y-1">
+            <label for="FirstName" class="block font-semibold uppercase tracking-wider text-brand-espresso">First Name</label>
+            <input type="text" name="customer[first_name]" id="FirstName" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="First Name">
+          </div>
+          <div class="space-y-1">
+            <label for="LastName" class="block font-semibold uppercase tracking-wider text-brand-espresso">Last Name</label>
+            <input type="text" name="customer[last_name]" id="LastName" class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="Last Name">
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label for="Email" class="block font-semibold uppercase tracking-wider text-brand-espresso">Email Address *</label>
+          <input type="email" name="customer[email]" id="Email" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="patron@domain.com">
+        </div>
+
+        <div class="space-y-1">
+          <label for="CreatePassword" class="block font-semibold uppercase tracking-wider text-brand-espresso">Password *</label>
+          <input type="password" name="customer[password]" id="CreatePassword" required class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm focus:border-brand-burgundy focus:outline-none" placeholder="••••••••">
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors shadow-sm cursor-pointer">
+          REGISTER ATELIER ACCOUNT
+        </button>
+      {% endform %}
+
+      <div class="text-center pt-2 border-t border-[#EDE4D8] text-xs text-brand-mutedGray">
+        <span>Already have an account? </span>
+        <a href="{{ routes.account_login_url }}" class="font-semibold text-brand-burgundy underline uppercase tracking-wider">
+          Sign In
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

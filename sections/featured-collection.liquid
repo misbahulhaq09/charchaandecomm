@@ -1,0 +1,152 @@
+<section class="py-16 sm:py-20 bg-brand-cardIvory border-b border-[#EDE4D8]" data-purpose="featured-products" id="new-arrivals">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-1">
+          {{ section.settings.subheading | default: 'Couture Collection' }}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-light text-brand-espresso uppercase">
+          {{ section.settings.heading | default: 'New Arrivals' }}
+        </h2>
+        <p class="text-xs sm:text-sm text-brand-mutedGray tracking-wide mt-2">
+          {{ section.settings.description | default: 'The latest collection. Handcrafted heirloom couture.' }}
+        </p>
+      </div>
+      <div>
+        <a class="inline-block px-7 py-2.5 bg-brand-burgundy text-brand-cream border border-brand-gold/40 text-xs tracking-widest uppercase font-medium rounded-sm hover:bg-brand-deepWine transition-all shadow-sm" href="{{ section.settings.collection.url | default: routes.all_products_collection_url }}">
+          {{ section.settings.button_text | default: 'SHOP ALL' }}
+        </a>
+      </div>
+    </div>
+
+    <!-- 4-Column Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {%- assign featured_collection = collections[section.settings.collection] -%}
+      {%- if featured_collection != blank and featured_collection.products_count > 0 -%}
+        {%- for product in featured_collection.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback Pre-rendered Master Products matching Homepage -->
+        <!-- Product 1 -->
+        <div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70">
+          <a href="{{ routes.all_products_collection_url }}" class="block">
+            <div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+              <img alt="Zari Embroidered Raw Silk Anarkali" class="w-full h-full object-cover object-[37%_43%] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRz53MKTWQYIB9vJHiyVnAhZXR2A9JbyHC_gIXBHaUTdq4dWmBXGq2uD_CaMfqV6uJDLP3jffhYRW-LjGMT5SkPi5DzZnxf_n05rQ6iSq0ktQd8uxwqEueyoMgMicZ3EMvJ9UmIwTeb2AtoVnQHpW85UJK4eHB35gAoAhwu3LzX3a0vPmYzulyixyIZtN7p7hofTtf8f3XTJG2vKl0EF6r3olj4xEsx25ZVSCjLJIvVapzq3ggVbiS">
+              <button type="button" data-wishlist-btn data-wishlist-handle="zari-embroidered-raw-silk-anarkali" data-wishlist-title="Zari Embroidered Raw Silk Anarkali" data-wishlist-price="₹89,000" aria-label="Add to Wishlist" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm">
+                {% render 'icon', name: 'heart', class: 'w-4 h-4' %}
+              </button>
+              <span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Bespoke</span>
+            </div>
+            <h3 class="text-sm font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors uppercase tracking-wider">
+              Zari Embroidered Raw Silk Anarkali
+            </h3>
+          </a>
+          <p class="text-xs tracking-widest text-brand-mutedGray mt-1 font-semibold">₹89,000</p>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70">
+          <a href="{{ routes.all_products_collection_url }}" class="block">
+            <div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+              <img alt="Velvet Sherwani with Heritage Dabka" class="w-full h-full object-cover object-[53%_43%] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ3csvLvHCgHiUpX7ZOWVku3qH9MGniNpHr6fnYlKahCpPcYdPG8F1bif-GASoWGkH6iMAFtdAT57mudd0W7IZ7neABKe14UDaSs0axbk0V-0C8LCa6IPY5KvH62VZmLYHQqBgy7QgdzGjsKENoJ45Q-4dbSp2rb9-E3sMM3fYut6m0sce3SZAA7xdEUWVq-zue6OCtAhq-RCkATk2tLfPpKyxc-UKlnNjeIUFLvMZ7hS1ik3875bT">
+              <button type="button" data-wishlist-btn data-wishlist-handle="velvet-sherwani-with-heritage-dabka" data-wishlist-title="Velvet Sherwani with Heritage Dabka" data-wishlist-price="₹1,25,000" aria-label="Add to Wishlist" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm">
+                {% render 'icon', name: 'heart', class: 'w-4 h-4' %}
+              </button>
+              <span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Royal Edit</span>
+            </div>
+            <h3 class="text-sm font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors uppercase tracking-wider">
+              Velvet Sherwani with Heritage Dabka
+            </h3>
+          </a>
+          <p class="text-xs tracking-widest text-brand-mutedGray mt-1 font-semibold">₹1,25,000</p>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70">
+          <a href="{{ routes.all_products_collection_url }}" class="block">
+            <div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+              <img alt="Handwoven Tissue Silk Saree" class="w-full h-full object-cover object-[70%_43%] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRgyDfDVzW5GpZRJe8bOMfXNkpHFldT7kk88nhd3NZayO6kI24uCPhse5utcj8iIZm-aAcWIN2YOBmmJmbfXbotEMiLgYPUn9P3STjtveOLh8sWany8z8qw_-NX7VGJQxNbVDS05rQJCw9tcchpPNVsfx9_aHHg4Z6yuh47-7k1v0ypMri69ZoAMYaJSr4FsljRncqwYI_vs_BWvCwqCztTgMmOpUeF-6HEjEICdAU6I4g3zckkeLn">
+              <button type="button" data-wishlist-btn data-wishlist-handle="handwoven-tissue-silk-saree" data-wishlist-title="Handwoven Tissue Silk Saree" data-wishlist-price="₹64,000" aria-label="Add to Wishlist" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm">
+                {% render 'icon', name: 'heart', class: 'w-4 h-4' %}
+              </button>
+            </div>
+            <h3 class="text-sm font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors uppercase tracking-wider">
+              Handwoven Tissue Silk Saree
+            </h3>
+          </a>
+          <p class="text-xs tracking-widest text-brand-mutedGray mt-1 font-semibold">₹64,000</p>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70">
+          <a href="{{ routes.all_products_collection_url }}" class="block">
+            <div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+              <img alt="Sculpted Bridal Lehenga Set" class="w-full h-full object-cover object-[86%_43%] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuF7JCkzuSXZyiXJN3oGi_XVX6RhWYLMQPC0Hgeq-WH6K9D_rbkpLawFF8PDLjQ_Y3w74MzjyTskkuhAdiqqZPyNnKnvn1sh101xTNdpjUtWRK7NGIujPJM_A2aK3HPFXRN0OvvmgRjl5OMVCbW-_R8nIpXnmquKdwuyeoX_HvtanDq_ZjkylgVrYgLEOqXcFRok5kOQwXcNRRLZmpgmRu-3T2EXlgBtpop48F7lY_A5oXBoJrjW2T">
+              <button type="button" data-wishlist-btn data-wishlist-handle="sculpted-bridal-lehenga-set" data-wishlist-title="Sculpted Bridal Lehenga Set" data-wishlist-price="₹1,95,000" aria-label="Add to Wishlist" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white text-brand-burgundy transition-colors shadow-sm">
+                {% render 'icon', name: 'heart', class: 'w-4 h-4' %}
+              </button>
+              <span class="absolute bottom-3 left-3 bg-brand-burgundy/90 text-brand-cream text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Bridal</span>
+            </div>
+            <h3 class="text-sm font-medium text-brand-espresso group-hover:text-brand-burgundy transition-colors uppercase tracking-wider">
+              Sculpted Bridal Lehenga Set
+            </h3>
+          </a>
+          <p class="text-xs tracking-widest text-brand-mutedGray mt-1 font-semibold">₹1,95,000</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Couture Collection"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "The latest collection. Handcrafted heirloom couture."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP ALL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

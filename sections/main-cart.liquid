@@ -1,0 +1,157 @@
+<div class="py-8 sm:py-14 bg-brand-cream" data-section-id="{{ section.id }}" data-section-type="cart">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="py-6 sm:py-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-[#EDE4D8] pb-6 mb-8 gap-4">
+        <div>
+          <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold block mb-1">
+            ATELIER REGISTRY
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-light text-brand-espresso uppercase">
+            Consignment Bag
+          </h1>
+        </div>
+        <a href="{{ routes.all_products_collection_url }}" class="text-xs uppercase tracking-widest text-brand-gold hover:text-brand-burgundy transition-colors">
+          ← Continue Exploring
+        </a>
+      </div>
+
+      {%- if cart.item_count > 0 -%}
+        <form action="{{ routes.cart_url }}" method="post" id="cart" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          <!-- LEFT: ITEMS LIST (8 cols) -->
+          <div class="lg:col-span-8 space-y-6">
+            <div class="border border-[#EDE4D8] rounded-sm bg-[#FCFBF9] divide-y divide-[#EDE4D8]">
+              {%- for item in cart.items -%}
+                <div class="p-4 sm:p-6 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
+                  <!-- Thumbnail -->
+                  <div class="w-20 h-28 bg-[#EDE5DA] rounded-sm overflow-hidden shrink-0">
+                    {%- if item.image -%}
+                      <img src="{{ item.image | image_url: width: 300 }}" alt="{{ item.title | escape }}" class="w-full h-full object-cover">
+                    {%- endif -%}
+                  </div>
+
+                  <!-- Details -->
+                  <div class="flex-1 space-y-1">
+                    <a href="{{ item.url }}" class="text-sm font-semibold text-brand-espresso uppercase hover:text-brand-burgundy transition-colors">
+                      {{ item.product.title }}
+                    </a>
+                    {%- unless item.product.has_only_default_variant -%}
+                      <p class="text-xs text-brand-gold uppercase tracking-wider">{{ item.variant.title }}</p>
+                    {%- endunless -%}
+                    <p class="text-xs text-brand-mutedGray">{{ item.price | money }} per creation</p>
+                    
+                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="inline-block text-[10px] uppercase tracking-widest text-[#BA1A1A] hover:underline pt-2">
+                      Remove from Bag
+                    </a>
+                  </div>
+
+                  <!-- Quantity Controls & Line Price -->
+                  <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-4">
+                    <div class="flex items-center border border-[#EDE4D8] rounded-sm bg-[#FAF7F2]">
+                      <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ item.quantity | minus: 1 }}" class="w-8 h-8 flex items-center justify-center text-xs hover:bg-[#EDE5DA] transition-colors">-</a>
+                      <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" class="w-10 text-center text-xs border-none bg-transparent font-medium">
+                      <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ item.quantity | plus: 1 }}" class="w-8 h-8 flex items-center justify-center text-xs hover:bg-[#EDE5DA] transition-colors">+</a>
+                    </div>
+                    <span class="text-sm font-semibold text-brand-burgundy tracking-wide">
+                      {{ item.final_line_price | money }}
+                    </span>
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+
+            <!-- Bespoke Notes / Measurements Instructions -->
+            <div class="p-6 border border-[#EDE4D8] rounded-sm bg-[#FCFBF9] space-y-3">
+              <label for="CartSpecialInstructions" class="block text-xs uppercase tracking-widest font-semibold text-brand-espresso">
+                Special Atelier Tailoring Instructions / Measurements
+              </label>
+              <textarea
+                name="note"
+                id="CartSpecialInstructions"
+                rows="3"
+                placeholder="Include custom blouse length, sleeve measurements, event date, or bespoke styling requirements..."
+                class="w-full p-3 bg-brand-cream border border-[#EDE4D8] rounded-sm text-xs text-brand-espresso focus:border-brand-burgundy focus:outline-none"
+              >{{ cart.note }}</textarea>
+              <button type="submit" name="update" class="px-5 py-2 border border-[#EDE4D8] text-[10px] uppercase tracking-widest font-semibold text-brand-espresso hover:border-brand-burgundy rounded-sm transition-colors cursor-pointer">
+                Update Bag Details
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT: ORDER SUMMARY (4 cols) -->
+          <div class="lg:col-span-4">
+            <div class="p-6 border border-[#EDE4D8] rounded-sm bg-[#FCFBF9] space-y-6 sticky top-28 shadow-sm">
+              <h2 class="text-sm uppercase tracking-widest font-semibold text-brand-burgundy border-b border-[#EDE4D8] pb-3">
+                Consignment Summary
+              </h2>
+
+              <div class="space-y-3 text-xs tracking-wider">
+                <div class="flex justify-between text-brand-mutedGray">
+                  <span>Bag Subtotal</span>
+                  <span class="font-semibold text-brand-espresso">{{ cart.original_total_price | money }}</span>
+                </div>
+                {%- if cart.total_discount > 0 -%}
+                  <div class="flex justify-between text-emerald-800">
+                    <span>Atelier Privileges</span>
+                    <span>-{{ cart.total_discount | money }}</span>
+                  </div>
+                {%- endif -%}
+                <div class="flex justify-between text-brand-mutedGray">
+                  <span>White Glove Delivery</span>
+                  <span class="text-brand-gold uppercase text-[10px] font-semibold">Complimentary</span>
+                </div>
+                <div class="border-t border-[#EDE4D8] pt-3 flex justify-between text-sm font-semibold text-brand-burgundy">
+                  <span>Total Amount</span>
+                  <span>{{ cart.total_price | money }}</span>
+                </div>
+              </div>
+
+              <p class="text-[10px] text-brand-mutedGray leading-relaxed tracking-wide">
+                Taxes and duty included. White glove signature delivery scheduled upon master artisan completion.
+              </p>
+
+              <button
+                type="submit"
+                name="checkout"
+                class="w-full py-4 bg-brand-burgundy text-brand-cream border border-brand-gold/40 text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-all shadow-sm cursor-pointer"
+              >
+                PROCEED TO SANCTION &amp; CHECKOUT
+              </button>
+
+              <div class="text-center pt-2">
+                <a href="/pages/offers" class="text-[10px] uppercase tracking-widest text-brand-gold hover:text-brand-burgundy underline">
+                  Have an Atelier Privilege Code? View Offers →
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      {%- else -%}
+        <!-- Empty Cart -->
+        <div class="text-center py-20 bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm space-y-4 max-w-2xl mx-auto">
+          <span class="text-4xl">🛍️</span>
+          <h2 class="text-2xl font-light text-brand-espresso uppercase">Your Consignment Bag is Empty</h2>
+          <p class="text-xs text-brand-mutedGray tracking-wider max-w-md mx-auto">
+            You currently have no haute couture pieces reserved in your atelier consignment bag.
+          </p>
+          <div class="pt-4">
+            <a href="{{ routes.all_products_collection_url }}" class="inline-block px-8 py-3.5 bg-brand-burgundy text-brand-cream text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-all shadow-sm">
+              DISCOVER COUTURE ARCHIVE
+            </a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,40 @@
+{
+  "general": {
+    "search": "Search",
+    "search_placeholder": "Search haute couture, bridal, sherwanis...",
+    "cart": "Shopping Bag",
+    "continue_shopping": "Continue Exploring",
+    "back": "Back",
+    "breadcrumbs": {
+      "home": "Home"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "buy_now": "Order Bespoke Creation",
+      "sold_out": "Archived / Sold Out",
+      "unavailable": "Unavailable",
+      "price": "Price",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "quantity": "Quantity"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Atelier Consignment Bag",
+      "empty": "Your consignment bag is empty.",
+      "subtotal": "Subtotal",
+      "checkout": "Proceed to Checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and bespoke white-glove shipping calculated at checkout",
+      "update": "Update Bag",
+      "remove": "Remove Item"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Complimentary White Glove Delivery Across India"
+    }
+  }
+}

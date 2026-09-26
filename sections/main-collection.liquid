@@ -1,0 +1,91 @@
+{%- paginate collection.products by section.settings.products_per_page -%}
+  <div class="py-8 sm:py-12 bg-brand-cream" data-section-id="{{ section.id }}" data-section-type="collection">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumbs -->
+      {% render 'breadcrumbs' %}
+
+      <!-- Collection Header -->
+      <div class="text-center py-6 sm:py-10 max-w-3xl mx-auto space-y-3">
+        <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold">
+          ATELIER CURATION
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-light text-brand-espresso uppercase tracking-tight">
+          {{ collection.title | default: 'Haute Couture Collection' }}
+        </h1>
+        {%- if collection.description != blank -%}
+          <div class="text-xs sm:text-sm text-brand-mutedGray font-light leading-relaxed">
+            {{ collection.description }}
+          </div>
+        {%- else -%}
+          <p class="text-xs sm:text-sm text-brand-mutedGray font-light leading-relaxed">
+            Discover bespoke patron concessions, wedding trousseau sanctions, and archival incentives extended by the Char Chaand Atelier.
+          </p>
+        {%- endif -%}
+      </div>
+
+      <!-- Filter & Sort Bar -->
+      <div class="border-y border-[#EDE4D8] py-4 my-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs uppercase tracking-widest text-brand-espresso">
+        <!-- Results Counter -->
+        <span class="text-brand-mutedGray">
+          Showing {{ collection.products_count }} Creations
+        </span>
+
+        <!-- Sorting Selector -->
+        <div class="flex items-center gap-3">
+          <label for="SortBy" class="text-brand-mutedGray font-medium">Sort By:</label>
+          <select
+            name="sort_by"
+            id="SortBy"
+            class="bg-brand-cream border border-[#EDE4D8] text-xs uppercase tracking-wider py-1.5 px-3 rounded-sm text-brand-espresso focus:border-brand-burgundy focus:outline-none cursor-pointer"
+            onchange="location.href = window.location.pathname + '?sort_by=' + this.value"
+          >
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <option value="manual" {% if sort_by == 'manual' %}selected{% endif %}>Curated Atelier</option>
+            <option value="best-selling" {% if sort_by == 'best-selling' %}selected{% endif %}>Most Revered</option>
+            <option value="price-ascending" {% if sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
+            <option value="price-descending" {% if sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
+            <option value="created-descending" {% if sort_by == 'created-descending' %}selected{% endif %}>New Arrivals</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+        {%- if collection.products.size > 0 -%}
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        {%- else -%}
+          <div class="col-span-full py-16 text-center text-[#706465] space-y-4">
+            <p class="text-sm uppercase tracking-widest">No couture pieces found in this archive collection.</p>
+            <a href="{{ routes.all_products_collection_url }}" class="inline-block px-8 py-3 bg-brand-burgundy text-brand-cream text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors">
+              Explore All Creations
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Pagination -->
+      {%- if paginate.pages > 1 -%}
+        {% render 'pagination', paginate: paginate %}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 12,
+      "label": "Products per page"
+    }
+  ]
+}
+{% endschema %}

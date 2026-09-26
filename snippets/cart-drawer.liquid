@@ -1,0 +1,73 @@
+{%- comment -%}
+  Slide-out Cart Drawer Snippet
+{%- endcomment -%}
+
+<div id="cart-drawer-overlay" class="cart-drawer-overlay"></div>
+
+<div id="cart-drawer" class="cart-drawer">
+  <!-- Header -->
+  <div class="p-6 border-b border-[#EDE4D8] flex items-center justify-between bg-[#F5ECE1]">
+    <div class="flex items-center space-x-2">
+      <span class="text-xs uppercase tracking-widest font-semibold text-[#4A0E17]">Atelier Consignment Bag</span>
+      <span class="cart-count-badge bg-[#4A0E17] text-[#FAF7F2] text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+        {{ cart.item_count }}
+      </span>
+    </div>
+    <button type="button" id="cart-drawer-close" class="p-2 text-[#706465] hover:text-[#4A0E17] transition-colors cursor-pointer" aria-label="Close Bag">
+      {% render 'icon', name: 'close', class: 'w-4 h-4' %}
+    </button>
+  </div>
+
+  <!-- Items Scroll Area -->
+  <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+    {%- if cart.item_count == 0 -%}
+      <div class="py-16 text-center text-[#706465] space-y-3">
+        <span class="text-3xl">🛍️</span>
+        <p class="text-xs uppercase tracking-widest font-medium">Your consignment bag is empty.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="inline-block mt-2 px-6 py-2.5 bg-[#4A0E17] text-[#FAF7F2] text-[10px] uppercase tracking-widest font-semibold rounded-sm hover:bg-[#3B0A11] transition-all">Explore Collections</a>
+      </div>
+    {%- else -%}
+      {%- for item in cart.items -%}
+        <div class="flex gap-4 py-4 border-b border-[#EDE4D8] items-center text-xs">
+          <div class="w-16 h-20 bg-[#F5ECE1] rounded-sm overflow-hidden flex-shrink-0">
+            {%- if item.image -%}
+              <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" class="w-full h-full object-cover">
+            {%- endif -%}
+          </div>
+          <div class="flex-1 min-w-0 space-y-1">
+            <h4 class="font-medium text-[#1F1617] truncate">{{ item.product.title }}</h4>
+            {%- unless item.product.has_only_default_variant -%}
+              <p class="text-[10px] text-[#706465]">{{ item.variant.title }}</p>
+            {%- endunless -%}
+            <p class="text-[11px] text-[#4A0E17] font-semibold">{{ item.final_price | money }}</p>
+            <div class="flex items-center gap-2 pt-1">
+              <button type="button" class="w-5 h-5 border border-[#EDE4D8] rounded flex items-center justify-center text-[10px] hover:border-[#4A0E17]" onclick="changeItemQty('{{ item.key }}', {{ item.quantity | minus: 1 }})">-</button>
+              <span class="text-[11px] px-1">{{ item.quantity }}</span>
+              <button type="button" class="w-5 h-5 border border-[#EDE4D8] rounded flex items-center justify-center text-[10px] hover:border-[#4A0E17]" onclick="changeItemQty('{{ item.key }}', {{ item.quantity | plus: 1 }})">+</button>
+              <button type="button" class="text-[10px] text-[#BA1A1A] underline ml-auto uppercase tracking-wider" onclick="changeItemQty('{{ item.key }}', 0)">Remove</button>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  <!-- Footer / Checkout Area -->
+  <div class="p-6 border-t border-[#EDE4D8] bg-[#F5ECE1] space-y-4">
+    <div class="flex items-center justify-between text-xs tracking-widest uppercase">
+      <span class="text-[#706465] font-medium">Consignment Subtotal</span>
+      <span id="cart-drawer-subtotal" class="text-sm font-semibold text-[#4A0E17]">{{ cart.total_price | money }}</span>
+    </div>
+    <p class="text-[10px] text-[#706465] text-center tracking-wider">
+      White-glove delivery & taxes calculated at checkout
+    </p>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="{{ routes.cart_url }}" class="w-full py-3 text-center border border-[#4A0E17] text-[#4A0E17] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-[#FAF7F2] transition-colors">
+        View Bag
+      </a>
+      <a href="/checkout" class="w-full py-3 text-center bg-[#4A0E17] text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-[#3B0A11] transition-colors">
+        Checkout
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="py-8 sm:py-14 bg-brand-cream" data-section-id="{{ section.id }}">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="text-center space-y-3">
+      <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold">
+        ATELIER PROTOCOLS &amp; HERITAGE CHARTER
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-light text-brand-espresso uppercase tracking-tight">
+        {{ page.title | default: 'Information & Policies' }}
+      </h1>
+    </div>
+
+    <!-- Page Content if populated in Shopify Admin -->
+    {%- if page.content != blank -%}
+      <div class="bg-[#FCFBF9] border border-[#EDE4D8] p-6 sm:p-10 rounded-sm shadow-sm text-xs text-brand-mutedGray font-light leading-relaxed prose prose-sm max-w-none">
+        {{ page.content }}
+      </div>
+    {%- endif -%}
+
+    <!-- Haute Couture Policy Pillars -->
+    <div class="space-y-4 text-xs">
+      <!-- Section 1 -->
+      <details class="bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm p-6 group shadow-sm" open>
+        <summary class="flex justify-between items-center cursor-pointer uppercase tracking-widest font-semibold text-brand-espresso list-none">
+          <span class="flex items-center gap-2"><span class="text-brand-gold">01.</span> Complimentary White Glove Delivery</span>
+          <span class="text-brand-gold transition-transform group-open:rotate-180">▾</span>
+        </summary>
+        <div class="pt-4 text-brand-mutedGray font-light leading-relaxed space-y-2 border-t border-[#EDE4D8] mt-4">
+          <p>Char Chaand provides insured, complimentary white-glove delivery across all major Indian metropolitan centres and tier-one cities. Every piece is transported in temperature-controlled transit packaging.</p>
+          <p>International shipments to over 45 countries are dispatched via DHL Express Diplomatic Transit with real-time consignment tracking.</p>
+        </div>
+      </details>
+
+      <!-- Section 2 -->
+      <details class="bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm p-6 group shadow-sm">
+        <summary class="flex justify-between items-center cursor-pointer uppercase tracking-widest font-semibold text-brand-espresso list-none">
+          <span class="flex items-center gap-2"><span class="text-brand-gold">02.</span> Bespoke Fitting &amp; Sizing Protocols</span>
+          <span class="text-brand-gold transition-transform group-open:rotate-180">▾</span>
+        </summary>
+        <div class="pt-4 text-brand-mutedGray font-light leading-relaxed space-y-2 border-t border-[#EDE4D8] mt-4">
+          <p>Upon consignment sanction, an atelier liaison coordinates with you for precise 32-point anatomical measurements. We provide complimentary post-delivery minor alteration passes within 30 days of receipt.</p>
+        </div>
+      </details>
+
+      <!-- Section 3 -->
+      <details class="bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm p-6 group shadow-sm">
+        <summary class="flex justify-between items-center cursor-pointer uppercase tracking-widest font-semibold text-brand-espresso list-none">
+          <span class="flex items-center gap-2"><span class="text-brand-gold">03.</span> Heirloom Preservation &amp; Storage</span>
+          <span class="text-brand-gold transition-transform group-open:rotate-180">▾</span>
+        </summary>
+        <div class="pt-4 text-brand-mutedGray font-light leading-relaxed space-y-2 border-t border-[#EDE4D8] mt-4">
+          <p>Every bridal and sherwani creation arrives in an archival unbleached muslin garment bag inside a bespoke velvet-lined wooden chest. Store away from direct sunlight in a dry, ventilated setting.</p>
+        </div>
+      </details>
+
+      <!-- Section 4 -->
+      <details class="bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm p-6 group shadow-sm">
+        <summary class="flex justify-between items-center cursor-pointer uppercase tracking-widest font-semibold text-brand-espresso list-none">
+          <span class="flex items-center gap-2"><span class="text-brand-gold">04.</span> Cancellation &amp; Returns Policy</span>
+          <span class="text-brand-gold transition-transform group-open:rotate-180">▾</span>
+        </summary>
+        <div class="pt-4 text-brand-mutedGray font-light leading-relaxed space-y-2 border-t border-[#EDE4D8] mt-4">
+          <p>Due to the bespoke, individually commissioned nature of our haute couture creations, customized orders cannot be cancelled once fabric cutting and embroidery formulate (48 hours after order placement).</p>
+          <p>Pret and archival jewellery pieces may be exchanged within 7 days of delivery, subject to tag preservation and inspection.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Concierge Help Footer -->
+    <div class="p-6 bg-brand-champagne/60 border border-[#EDE4D8] rounded-sm text-xs text-center space-y-2">
+      <p class="font-semibold text-brand-espresso uppercase tracking-wider">Have Additional Inquiries or Require Legal Documentation?</p>
+      <a href="/pages/contact" class="inline-block text-brand-burgundy font-semibold underline uppercase tracking-widest text-[10px]">
+        Contact Atelier Legal &amp; Concierge Desk →
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page Content",
+  "settings": []
+}
+{% endschema %}

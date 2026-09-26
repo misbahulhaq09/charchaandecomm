@@ -1,0 +1,107 @@
+<div class="py-8 sm:py-14 bg-brand-cream" data-section-id="{{ section.id }}">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumbs -->
+    {% render 'breadcrumbs' %}
+
+    <div class="py-6 sm:py-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-[#EDE4D8] pb-6 mb-8 gap-4">
+        <div>
+          <span class="text-[10px] sm:text-xs uppercase tracking-ultra text-brand-gold font-semibold block mb-1">
+            PATRON CURATION
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-light text-brand-espresso uppercase">
+            Saved Creations &amp; Wishlist
+          </h1>
+          <p class="text-xs sm:text-sm text-brand-mutedGray font-light mt-1">
+            Curated heirloom selections reserved for your upcoming bridal trousseau and atelier fittings.
+          </p>
+        </div>
+        <button
+          type="button"
+          onclick="localStorage.removeItem('char_chaand_wishlist'); renderWishlistPage();"
+          class="text-xs uppercase tracking-widest text-[#BA1A1A] hover:underline"
+        >
+          Clear All Saved Pieces
+        </button>
+      </div>
+
+      <!-- Wishlist Grid Container -->
+      <div id="wishlist-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="wishlist-empty" class="hidden text-center py-20 bg-[#FCFBF9] border border-[#EDE4D8] rounded-sm space-y-4 max-w-xl mx-auto">
+        <span class="text-4xl">♡</span>
+        <h2 class="text-2xl font-light text-brand-espresso uppercase">No Saved Creations Yet</h2>
+        <p class="text-xs text-brand-mutedGray tracking-wider max-w-md mx-auto">
+          Tap the heart emblem on any couture creation in our collection to save it to your private atelier portfolio.
+        </p>
+        <div class="pt-4">
+          <a href="{{ routes.all_products_collection_url }}" class="inline-block px-8 py-3.5 bg-brand-burgundy text-brand-cream text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-all shadow-sm">
+            EXPLORE COUTURE COLLECTION
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function renderWishlistPage() {
+    const list = getWishlist();
+    const grid = document.getElementById('wishlist-grid');
+    const empty = document.getElementById('wishlist-empty');
+
+    if (!grid || !empty) return;
+
+    if (list.length === 0) {
+      grid.innerHTML = '';
+      empty.classList.remove('hidden');
+    } else {
+      empty.classList.add('hidden');
+      grid.innerHTML = list.map(item => `
+        <div class="group flex flex-col bg-brand-cream border border-brand-gold/25 p-3 rounded-sm transition-all hover:border-brand-gold/70 relative">
+          <div class="relative w-full aspect-[3/4] bg-[#EDE5DA] overflow-hidden mb-4 rounded-sm">
+            <a href="${item.url || '#'}" class="block w-full h-full">
+              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <button
+              type="button"
+              onclick="toggleWishlistItem('${item.handle}', '${item.title}'); renderWishlistPage();"
+              aria-label="Remove from Wishlist"
+              class="absolute top-3 right-3 p-2 rounded-full bg-white text-[#BA1A1A] transition-colors shadow-sm cursor-pointer z-10 hover:bg-[#FAF7F2]"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            <span class="absolute bottom-3 left-3 bg-[#4A0E17]/90 text-[#FAF7F2] text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium">Saved</span>
+          </div>
+          <div class="flex flex-col flex-1 justify-between">
+            <a href="${item.url || '#'}" class="block">
+              <h3 class="text-sm font-medium text-[#1F1617] group-hover:text-[#4A0E17] transition-colors uppercase tracking-wider line-clamp-2">
+                ${item.title}
+              </h3>
+            </a>
+            <div class="mt-2 flex items-center justify-between text-xs tracking-widest">
+              <span class="text-[#4A0E17] font-semibold">${item.price}</span>
+              <a href="${item.url || '#'}" class="text-[10px] uppercase font-semibold text-[#C5A880] hover:text-[#4A0E17] transition-colors">
+                View Piece →
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', renderWishlistPage);
+</script>
+
+{% schema %}
+{
+  "name": "Wishlist Page",
+  "settings": []
+}
+{% endschema %}

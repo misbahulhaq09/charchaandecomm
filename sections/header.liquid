@@ -1,0 +1,110 @@
+<header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#EDE4D8]" data-purpose="main-navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 flex items-center justify-between">
+    <!-- Brand Logo Area & Back Button for subpages -->
+    <div class="flex items-center gap-3 sm:gap-5">
+      {%- unless template == 'index' -%}
+        <a href="javascript:void(0)" onclick="if(window.history.length>1){window.history.back();}else{window.location.href='{{ routes.root_url }}';}" aria-label="Go Back" title="Go back to previous page" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#EDE4D8] text-[#1F1617] hover:text-[#4A0E17] hover:border-[#4A0E17] transition-all text-[10px] uppercase tracking-widest bg-[#FAF7F2]/80 group shadow-sm cursor-pointer select-none">
+          <span class="material-symbols-outlined text-[16px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+          <span class="font-medium text-[10px] tracking-widest hidden sm:inline">BACK</span>
+        </a>
+      {%- endunless -%}
+
+      <a class="group block" href="{{ routes.root_url }}">
+        <span class="text-xl sm:text-2xl lg:text-3xl tracking-widest text-brand-burgundy font-medium block uppercase transition-opacity group-hover:opacity-90">
+          CHAR CHAAND
+        </span>
+        <span class="text-[9px] tracking-ultra text-brand-gold uppercase block font-semibold -mt-0.5 tracking-[0.28em]">
+          HAUTE COUTURE
+        </span>
+      </a>
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest font-medium text-brand-espresso">
+      {%- if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0 -%}
+        {%- for link in linklists[section.settings.menu].links -%}
+          <a class="hover:text-brand-burgundy transition-colors {% if link.active %}text-brand-burgundy font-semibold border-b border-brand-burgundy pb-0.5{% endif %}" href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        <a class="hover:text-brand-burgundy transition-colors" href="{{ routes.all_products_collection_url }}">Collection</a>
+        <a class="hover:text-brand-burgundy transition-colors" href="/pages/offers">Offers</a>
+        <a class="hover:text-brand-burgundy transition-colors" href="/pages/contact">Concierge</a>
+        <a class="hover:text-brand-burgundy transition-colors" href="/pages/information">About</a>
+      {%- endif -%}
+    </nav>
+
+    <!-- Right Actions & CTA -->
+    <div class="flex items-center space-x-3 sm:space-x-5">
+      <!-- Search Icon -->
+      <a href="{{ routes.search_url }}" aria-label="Search" class="p-2 text-brand-espresso hover:text-brand-burgundy transition-colors">
+        {% render 'icon', name: 'search', class: 'w-4 h-4' %}
+      </a>
+
+      <!-- Wishlist Icon -->
+      <a href="/pages/wishlist" aria-label="Wishlist" class="p-2 text-brand-espresso hover:text-brand-burgundy transition-colors relative">
+        {% render 'icon', name: 'heart', class: 'w-4 h-4' %}
+        <span class="wishlist-count-badge absolute top-1 right-0 bg-brand-burgundy text-[#FAF7F2] text-[9px] w-3.5 h-3.5 rounded-full items-center justify-center font-bold hidden">0</span>
+      </a>
+
+      <!-- Account Icon -->
+      <a href="{{ routes.account_url }}" aria-label="Account" class="p-2 text-brand-espresso hover:text-brand-burgundy transition-colors">
+        {% render 'icon', name: 'account', class: 'w-4 h-4' %}
+      </a>
+
+      <!-- Bag Icon with Dynamic Counter -->
+      <a href="{{ routes.cart_url }}" data-cart-drawer-trigger aria-label="Shopping Bag" class="p-2 text-brand-espresso hover:text-brand-burgundy transition-colors relative cursor-pointer">
+        {% render 'icon', name: 'bag', class: 'w-4 h-4' %}
+        <span class="cart-count-badge absolute top-1 right-0 bg-brand-burgundy text-[#FAF7F2] text-[9px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold" {% if cart.item_count == 0 %}style="display:none;"{% endif %}>
+          {{ cart.item_count }}
+        </span>
+      </a>
+
+      <!-- Primary CTA Button -->
+      <a class="hidden sm:inline-flex items-center px-4 py-2 sm:px-5 sm:py-2.5 bg-brand-burgundy text-brand-cream border border-brand-gold/40 text-[11px] tracking-widest uppercase font-medium rounded-sm hover:bg-brand-deepWine transition-all shadow-sm" href="{{ routes.all_products_collection_url }}">
+        SHOP NOW
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button type="button" id="mobile-menu-toggle" class="lg:hidden p-2 text-brand-espresso hover:text-brand-burgundy transition-colors" aria-label="Open Navigation Menu">
+        {% render 'icon', name: 'menu', class: 'w-5 h-5' %}
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu-drawer" class="hidden lg:hidden fixed inset-x-0 top-full bg-[#FAF7F2] border-b border-[#EDE4D8] shadow-2xl p-6 transition-all">
+    <div class="flex flex-col space-y-4 text-xs uppercase tracking-widest font-medium">
+      {%- if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0 -%}
+        {%- for link in linklists[section.settings.menu].links -%}
+          <a class="py-2 border-b border-[#EDE4D8]/60 hover:text-brand-burgundy" href="{{ link.url }}">{{ link.title }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        <a class="py-2 border-b border-[#EDE4D8]/60 hover:text-brand-burgundy" href="{{ routes.all_products_collection_url }}">Collection</a>
+        <a class="py-2 border-b border-[#EDE4D8]/60 hover:text-brand-burgundy" href="/pages/offers">Offers & Privileges</a>
+        <a class="py-2 border-b border-[#EDE4D8]/60 hover:text-brand-burgundy" href="/pages/contact">Private Concierge</a>
+        <a class="py-2 border-b border-[#EDE4D8]/60 hover:text-brand-burgundy" href="/pages/order-tracking">Track Order</a>
+        <a class="py-2 border-b border-[#EDE4D8]/60 hover:text-brand-burgundy" href="/pages/information">About & Policies</a>
+      {%- endif -%}
+      <div class="pt-4 flex items-center justify-between">
+        <a href="{{ routes.account_url }}" class="text-brand-burgundy font-semibold">My Account</a>
+        <a href="/pages/wishlist" class="text-brand-burgundy font-semibold">Wishlist</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

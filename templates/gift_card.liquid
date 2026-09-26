@@ -1,0 +1,31 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Char Chaand &ndash; Atelier Gift Certificate</title>
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+</head>
+<body class="bg-brand-cream text-brand-espresso flex items-center justify-center min-h-screen p-6 font-sans">
+  <div class="max-w-md w-full bg-[#FCFBF9] border border-[#EDE4D8] p-8 text-center rounded-sm shadow-xl space-y-6">
+    <div>
+      <span class="text-[10px] uppercase tracking-ultra text-brand-gold font-semibold block">ATELIER PRIVILEGE</span>
+      <h1 class="text-2xl font-light text-brand-espresso uppercase">Haute Couture Gift Certificate</h1>
+    </div>
+    <div class="p-6 bg-brand-champagne/60 border border-brand-gold/40 rounded-sm space-y-2">
+      <span class="text-xs uppercase tracking-widest text-brand-mutedGray">Certificate Value</span>
+      <p class="text-3xl font-bold text-brand-burgundy">{{ gift_card.initial_value | money }}</p>
+    </div>
+    <div class="space-y-1">
+      <span class="text-[10px] uppercase tracking-wider text-brand-mutedGray">Certificate Redemption Code</span>
+      <p class="font-mono text-base font-bold text-brand-espresso tracking-widest bg-[#FAF7F2] p-3 border border-[#EDE4D8] rounded">
+        {{ gift_card.code | format_code }}
+      </p>
+    </div>
+    <a href="{{ shop.url }}" class="inline-block px-8 py-3 bg-brand-burgundy text-[#FAF7F2] text-xs uppercase tracking-widest font-semibold rounded-sm hover:bg-brand-deepWine transition-colors">
+      EXPLORE ATELIER
+    </a>
+  </div>
+</body>
+</html>

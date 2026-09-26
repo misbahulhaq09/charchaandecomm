@@ -1,0 +1,140 @@
+<section class="py-16 bg-brand-cream" data-purpose="editorial-split-banners">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Left Editorial Promo: The Bridal Edit -->
+      <div class="relative overflow-hidden bg-[#241315] text-[#FAF7F2] rounded-sm p-8 sm:p-12 flex flex-col justify-between min-h-[340px] border border-brand-burgundy">
+        <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-35 mix-blend-luminosity pointer-events-none">
+          {%- if section.settings.banner_1_image != blank -%}
+            <img src="{{ section.settings.banner_1_image | image_url: width: 800 }}" alt="{{ section.settings.banner_1_heading | escape }}" class="w-full h-full object-cover">
+          {%- else -%}
+            <img alt="Bridal Couture" class="w-full h-full object-cover object-[37%_58%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEhhtlGEL9oC1DFF4n_L7NlB6MdG8wqTKrG5t7n7XrYNX-lDa6PNMysIfNTwgu8iNre92A3HbB8tnmSVBbV_1xI_c5R0gng6ClmKo-N1qlKrqW0ToThnj0NKdz5gGo1NYJLRA-obul75FZ1ILiXbgBkGVo3YIjp1XOJC9JHlI5vatRBnP-mFQa5TMDomj7DoU71u6VPmmRy1X5-bO6Vq0mTk4dmxxzbLbRLP_X2PayFT2QlhWsPd0f">
+          {%- endif -%}
+        </div>
+        <div class="relative z-10">
+          <span class="text-[10px] tracking-ultra uppercase text-brand-gold block font-semibold mb-2">
+            {{ section.settings.banner_1_subheading | default: 'CURATED SELECTION' }}
+          </span>
+          <h3 class="text-3xl sm:text-4xl font-normal leading-snug uppercase">
+            {{ section.settings.banner_1_heading | default: 'The Bridal Edit' }}
+          </h3>
+          <p class="text-xs sm:text-sm text-[#DFD3C7] font-light mt-2 max-w-xs">
+            {{ section.settings.banner_1_desc | default: 'Intricate needlecraft & regal silhouettes tailored for celebratory majesty.' }}
+          </p>
+        </div>
+        <div class="relative z-10 pt-8">
+          <a class="inline-flex items-center text-xs tracking-widest uppercase font-semibold text-brand-gold hover:text-white transition-colors group" href="{{ section.settings.banner_1_link | default: routes.all_products_collection_url }}">
+            {{ section.settings.banner_1_btn | default: 'EXPLORE COUTURE' }} <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Editorial Promo: Heritage Jewellery -->
+      <div class="relative overflow-hidden bg-[#ECE3D7] text-brand-espresso rounded-sm p-8 sm:p-12 flex flex-col justify-between min-h-[340px] border border-brand-gold/40">
+        <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-40 mix-blend-multiply pointer-events-none">
+          {%- if section.settings.banner_2_image != blank -%}
+            <img src="{{ section.settings.banner_2_image | image_url: width: 800 }}" alt="{{ section.settings.banner_2_heading | escape }}" class="w-full h-full object-cover">
+          {%- else -%}
+            <img alt="Heritage Polki Jewellery" class="w-full h-full object-cover object-[78%_58%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBihdG2fovscu6JlQdOJpSjR6cdQhryrpm6EBiP1zPv7rIuqNxCfCt1eDwlW-sWKVzZxOYFP2JRcl2V6gL7gwDauAswlYwGr1Z6OEy6O_9FxEpf_F9ZMOqqjc-kub8aKzbCknF6dOLuwwCKTIOPh-61EKPTEz6uLspbztz81iAwmCEi_Jc49mOVV0Etu-7N9wUIjt67w_ciPuJ4jrFoChPRfY9VOEmY1wJ71AyqqZKqI7mR6ZBzSZex">
+          {%- endif -%}
+        </div>
+        <div class="relative z-10">
+          <span class="text-[10px] tracking-ultra uppercase text-brand-burgundy block font-semibold mb-2">
+            {{ section.settings.banner_2_subheading | default: 'POLKI & KUNDAN' }}
+          </span>
+          <h3 class="text-3xl sm:text-4xl font-normal leading-snug uppercase">
+            {{ section.settings.banner_2_heading | default: 'Heritage Jewellery' }}
+          </h3>
+          <p class="text-xs sm:text-sm text-brand-mutedGray font-light mt-2 max-w-xs">
+            {{ section.settings.banner_2_desc | default: 'Handcrafted Polki & Kundan masterpieces that preserve ancestral legacy.' }}
+          </p>
+        </div>
+        <div class="relative z-10 pt-8">
+          <a class="inline-flex items-center text-xs tracking-widest uppercase font-semibold text-brand-burgundy hover:text-brand-deepWine transition-colors group" href="{{ section.settings.banner_2_link | default: routes.all_products_collection_url }}">
+            {{ section.settings.banner_2_btn | default: 'DISCOVER JEWELLERY' }} <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial Banners",
+  "settings": [
+    {
+      "type": "text",
+      "id": "banner_1_subheading",
+      "label": "Banner 1 Subheading",
+      "default": "CURATED SELECTION"
+    },
+    {
+      "type": "text",
+      "id": "banner_1_heading",
+      "label": "Banner 1 Heading",
+      "default": "The Bridal Edit"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_1_desc",
+      "label": "Banner 1 Description",
+      "default": "Intricate needlecraft & regal silhouettes tailored for celebratory majesty."
+    },
+    {
+      "type": "text",
+      "id": "banner_1_btn",
+      "label": "Banner 1 Button Text",
+      "default": "EXPLORE COUTURE"
+    },
+    {
+      "type": "url",
+      "id": "banner_1_link",
+      "label": "Banner 1 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_1_image",
+      "label": "Banner 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "banner_2_subheading",
+      "label": "Banner 2 Subheading",
+      "default": "POLKI & KUNDAN"
+    },
+    {
+      "type": "text",
+      "id": "banner_2_heading",
+      "label": "Banner 2 Heading",
+      "default": "Heritage Jewellery"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_2_desc",
+      "label": "Banner 2 Description",
+      "default": "Handcrafted Polki & Kundan masterpieces that preserve ancestral legacy."
+    },
+    {
+      "type": "text",
+      "id": "banner_2_btn",
+      "label": "Banner 2 Button Text",
+      "default": "DISCOVER JEWELLERY"
+    },
+    {
+      "type": "url",
+      "id": "banner_2_link",
+      "label": "Banner 2 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_2_image",
+      "label": "Banner 2 Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial Banners"
+    }
+  ]
+}
+{% endschema %}

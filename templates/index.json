@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "AUTUMN / WINTER COUTURE",
+        "heading": "CHAR CHAAND",
+        "tagline": "Crafted with Elegance.",
+        "description": "Elevated heirloom couture and sculpted silhouettes, meticulously woven for celebrations of timeless grace.",
+        "button_text": "SHOP NOW",
+        "secondary_text": "EXPLORE ATELIER"
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "settings": {}
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Couture Collection",
+        "heading": "New Arrivals",
+        "description": "The latest collection. Handcrafted heirloom couture.",
+        "products_to_show": 4,
+        "button_text": "SHOP ALL"
+      }
+    },
+    "editorial_banners": {
+      "type": "editorial-banners",
+      "settings": {
+        "banner_1_subheading": "CURATED SELECTION",
+        "banner_1_heading": "The Bridal Edit",
+        "banner_1_desc": "Intricate needlecraft & regal silhouettes tailored for celebratory majesty.",
+        "banner_1_btn": "EXPLORE COUTURE",
+        "banner_2_subheading": "POLKI & KUNDAN",
+        "banner_2_heading": "Heritage Jewellery",
+        "banner_2_desc": "Handcrafted Polki & Kundan masterpieces that preserve ancestral legacy.",
+        "banner_2_btn": "DISCOVER JEWELLERY"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "subheading": "PATRON EXPERIENCES",
+        "heading": "What Our Clients Say"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "subheading": "PRIVILEGED ACCESS",
+        "heading": "Stay In The World of CHAR CHAAND",
+        "description": "Subscribe for private atelier previews, bespoke trunk shows, and seasonal reveals."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "featured_collection",
+    "editorial_banners",
+    "testimonials",
+    "newsletter"
+  ]
+}
