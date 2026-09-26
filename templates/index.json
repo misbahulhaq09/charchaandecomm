@@ -22,10 +22,6 @@
         "secondary_link": ""
       }
     },
-    "categories": {
-      "type": "collection-list",
-      "settings": {}
-    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -130,7 +126,6 @@
   },
   "order": [
     "hero",
-    "categories",
     "featured_collection",
     "featured_collection_jqeicX",
     "featured_collection_JjgkfG",
