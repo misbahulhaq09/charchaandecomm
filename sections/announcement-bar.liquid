@@ -2,11 +2,9 @@
   <div class="bg-brand-champagne border-b border-[#EADFCF] py-2 px-4 text-[11px] tracking-widest text-brand-burgundy font-medium uppercase" data-purpose="announcement-strip">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
       <div class="flex items-center space-x-6">
-        <span>{{ section.settings.announcement_text_1 }}</span>
-        {%- if section.settings.announcement_text_2 != blank -%}
-          <span class="hidden md:inline text-brand-gold">•</span>
-          <span class="hidden md:inline">{{ section.settings.announcement_text_2 }}</span>
-        {%- endif -%}
+        <span>{{ section.settings.announcement_text_1 | default: 'Complimentary White Glove Delivery Across India' }}</span>
+        <span class="hidden md:inline text-brand-gold">•</span>
+        <span class="hidden md:inline">{{ section.settings.announcement_text_2 | default: 'Bespoke Bridal Consultations Available' }}</span>
       </div>
       <div class="flex items-center space-x-6 text-[10px] tracking-widest">
         <a class="hover:text-brand-deepWine transition-colors" href="{{ section.settings.track_order_url | default: '/pages/order-tracking' }}">Track Order</a>
