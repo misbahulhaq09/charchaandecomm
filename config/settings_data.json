@@ -32,6 +32,7 @@
       },
       "header": {
         "type": "header",
+        "custom_css": [],
         "settings": {
           "menu": "main-menu"
         }
@@ -45,5 +46,12 @@
       }
     },
     "content_for_index": []
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".header__heading {text-align: center; justify-content: center;}",
+      ".header__heading-link {display: flex; justify-content: center; align-items: center;}",
+      ".header-wrapper .header {justify-content: center;}"
+    ]
   }
 }
